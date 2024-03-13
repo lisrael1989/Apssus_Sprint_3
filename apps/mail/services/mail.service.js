@@ -28,7 +28,7 @@ function save(mail) {
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
-        mail = _createMail(mail.vendor, mail.maxSpeed)
+        mail = _createMail(mail.from, mail.to,mail.subject,mail.body)
         return storageService.post(MAIL_KEY, mail)
     }
 }
@@ -41,14 +41,21 @@ function remove(mailId) {
     return storageService.remove(MAIL_KEY, mailId)
 }
 
-function getEmptyMail(id = '', from = '', to = '', subject = '', body = '') {
-    return { id, from, to, subject, body }
+function getEmptyMail( from = '', to = '', subject = '', body = '',id='') {
+    return { id,from, to, subject, body }
 }
 
 function _createMails() {
     let Mails = utilService.loadFromStorage(MAIL_KEY)
     if (!Mails || !Mails.length) {
         Mails = []
+        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
+        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
+        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
+        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
+        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
+        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
+        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
         Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
         Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
         Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))

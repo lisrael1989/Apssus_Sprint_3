@@ -1,20 +1,23 @@
+const { Link } = ReactRouterDOM
 
 
 export function MailList({ mails }) {
 
+    if (!mails) return <div>loading...</div>
+    return (<div className="mail-list-container">
+        <div className="mail-list">
 
-    return (<div className="mail-list">
-            <ul>
-                
-                {
-                    mails&&mails.map( mail => <il key={mail.id}>
-                        <div className="line-mail">
-                            <span>{mail.from}</span>
-                        </div>
-                    </il>)
-                  
-                }
-            </ul>
+
+            {
+                mails && mails.map(mail => <il key={mail.id}>
+                    <Link to={`/mail/${mail.id}`} className="line-mail">
+                        <span>{mail.from}</span>
+                        <span>{mail.subject}</span>
+                    </Link>
+                </il>)
+
+            }
+        </div>
     </div>
     )
-    }
+}

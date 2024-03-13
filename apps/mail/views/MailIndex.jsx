@@ -1,4 +1,5 @@
 const { useState, useEffect } = React
+const { Outlet } = ReactRouterDOM
 
 
 import { MailList } from "../cmps/MailList.jsx";
@@ -6,6 +7,7 @@ import { MailFilter } from "../cmps/MailFilter.jsx";
 import { mailService } from "../services/mail.service.js"
 
 export function MailIndex() {
+
     const [mails, setMails] = useState(null)
 
     useEffect(() => {
@@ -26,6 +28,7 @@ export function MailIndex() {
         <MailList
             mails={mails}
         />
+        <Outlet />
 
     </div>
     )
