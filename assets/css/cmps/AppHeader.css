@@ -1,7 +1,6 @@
 header {
+    border-bottom: 1px solid rgb(224, 224, 224);
 
-    background: lightcyan;
-    border-bottom: 2px solid white;
 }
 
 .app-header {
@@ -10,16 +9,27 @@ header {
     padding: 20px 0;
 }
 
+.main-logo{
+    font-size: 2em;
+    font-family: lato-thin;
+    margin-left: 20px;
+}
+
+.main-logo span{
+    color: rgb(63, 63, 225);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
 nav a {
     margin: .5em;
+    font-size: 2em;
+    margin-right: 30px;
 }
 
-nav a:active {
-    color: purple;
-}
 
 nav a.active {
-    color: darkblue;
+    color: gold;
     font-weight: bold;
     text-decoration: overline;
 }

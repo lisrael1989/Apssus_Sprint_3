@@ -20,6 +20,7 @@
  background-color: rgb(165, 214, 243);
 }
 
+
 .note-content {
   margin-bottom: 10px;
   list-style-type: none;
@@ -27,30 +28,35 @@
 
 .type-txt {
   color: #333; 
-  margin-bottom: 8px;
   font-size: 1.5em;
   text-align: center;
   margin-bottom: 30px;
   
 }
 
-.type-url img {
+.type-url {
   max-width: 100%; 
   height: auto; 
   display: block; 
-  margin-bottom: 8px;
+  margin-bottom: 30px;
 }
 
 .note-title {
+  margin-top: 20px;
   font-weight: bold;
+  font-size: 2em;
   color: #444;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .note-actions {
+  cursor: pointer;
   display: flex;
   justify-content: space-between; 
   margin-top: 10px; 
 }
+
 
 .remove-btn,
 .edit-btn,
@@ -66,7 +72,12 @@
   color: black;
 }
 
+.note-action ,button:hover{
+background-color: bisque;
+transition: 0.5s;
+transform: scale(1.5);
 
+}
 
 
 .note-item .close-btn {

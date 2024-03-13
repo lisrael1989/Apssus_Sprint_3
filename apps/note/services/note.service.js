@@ -72,8 +72,8 @@ function _createNotes() {
         type: 'NoteImg',
         isPinned: false,
         info: {
-        url: 'http://some-img/me',
-        title: 'Bobi and Me'
+        url: 'https://i.pinimg.com/564x/f0/ae/8b/f0ae8baf772d83667bb91c266ee9d8fc.jpg',
+        title: 'Love this game'
         },
         style: {
         backgroundColor: '#00d'
@@ -90,7 +90,31 @@ function _createNotes() {
         { txt: 'Coding power', doneAt: 187111111 }
         ]
         }
-        }
+        },
+        {
+            id: 'n104',
+            createdAt: 1112222,
+            type: 'NoteTxt',
+            isPinned: true,
+            style: {
+            backgroundColor: '#00d'
+            },
+            info: {
+            txt: 'HAPPY TO BE HERE 😎'
+            }
+            },
+            {
+                id: 'n105',
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    url: 'https://i.pinimg.com/564x/1f/87/b2/1f87b29a2df46100a75aa86b170a21cb.jpg',
+                    title: 'Sprint 3 be like '
+                },
+                style: {
+                backgroundColor: '#00d'
+                }
+                }
         ]
         utilService.saveToStorage(NOTE_KEY, notes);
 

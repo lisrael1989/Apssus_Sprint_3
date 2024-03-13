@@ -4,13 +4,14 @@ export function AppHeader() {
 
     return <header className="app-header">
         <Link to="/">
-            <h3>LOGO!</h3>
+            <h3 className="main-logo"><span>Aps</span>sus</h3>
         </Link>
         <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/mail">Mail</NavLink>
-            <NavLink to="/note">Note</NavLink>
+            <NavLink className="fa-solid fa-house" to="/"></NavLink>
+            <NavLink className="fa-solid fa-address-card" to="/about"></NavLink>
+            <NavLink className="fa-solid fa-envelope-open" to="/mail"></NavLink>
+            <NavLink className="fa-solid fa-note-sticky" to="/note"></NavLink>
         </nav>
     </header>
 }
+

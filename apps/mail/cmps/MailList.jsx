@@ -28,8 +28,7 @@ export function MailList({ mails }) {
                         <span>{mail.subject}</span>
                         {/* <span>{mail.}</span> */}
                     </Link>
-                    {/* <span onClick={() => OnRemoveCar(mail.id)}>remove</span> */}
-                </div>)
+                </il>)
 
                 )}
         </div>
