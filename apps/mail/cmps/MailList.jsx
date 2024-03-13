@@ -18,14 +18,15 @@ export function MailList({ mails, OnRemoveMail, OnReadMail }) {
                 filteredMails.map(mail => (<div className={mail.isRead ? 'read' : ''} key={mail.id} >
                     <div className="line-mail">
                         <Link to={`/mail/${mail.id}`}  >
+
                             <span>{mail.from}</span>
-                            <span>{mail.subject}</span>
+
                             {/* <span>{mail.}</span> */}
                         </Link>
+                        <span>{mail.subject}</span>
                         <div className="btn-mail">
-                            <span onClick={() => OnRemoveMail(mail.id)}>remove</span>
-                            <span onClick={() => OnReadMail(mail.id)}>read</span>
-                        </div>
+                            <span className="fa-solid fa-trash" onClick={() => OnRemoveMail(mail.id)}></span>
+                            <span className={mail.isRead ? "fa-regular fa-envelope-open" : "fa-regular fa-envelope"} onClick={() => OnReadMail(mail.id)}></span>                        </div>
                     </div></div>)
 
                 )}
