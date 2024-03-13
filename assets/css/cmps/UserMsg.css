@@ -1,9 +1,16 @@
 .user-msg {
     background-color: lightgray;
-    padding: 1em;
+    padding: .5em 1em;
+    position: fixed;
+    z-index: 1000;
     position: absolute;
-    top: 1em;
+    bottom: 1em;
     right: 1em;
+    font-weight: bold;
+    border-radius: 2px;
+    font-size: 1.3em;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.331);
+
 }
 
 .user-msg.success {
