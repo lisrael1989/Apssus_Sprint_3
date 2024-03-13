@@ -28,7 +28,7 @@ export function MailList({ mails }) {
                         <span>{mail.subject}</span>
                         {/* <span>{mail.}</span> */}
                     </Link>
-                </il>)
+                </div>)
 
                 )}
         </div>
