@@ -4,34 +4,33 @@ import { mailService } from "../services/mail.service.js"
 
 
 
-export function MailList({ mails }) {
-    const [isRemove, setRemove] = useState(false)
+export function MailList({ mails, OnRemoveMail, OnReadMail }) {
 
-    function OnRemoveCar(mailId) {
-        mailService.get(mailId).then((mail) => {
-            mail.isRemove = Date.now()
-            setRemove(mail)
-            mailService.save(mail)
-        })
-    }
 
 
     if (!mails) return <div>loading...</div>
+    const filteredMails = mails.filter(mail => !mail.isRemove)
     return (
         <div className="mail-list">
 
 
             {
-               !isRemove && mails.map(mail => (<div className={mail.isRead ? 'read' : ''} key={mail.id} >
-                    <Link to={`/mail/${mail.id}`} className="line-mail" >
-                        <span>{mail.from}</span>
-                        <span>{mail.subject}</span>
-                        {/* <span>{mail.}</span> */}
-                    </Link>
-                </div>)
+                filteredMails.map(mail => (<div className={mail.isRead ? 'read' : ''} key={mail.id} >
+                    <div className="line-mail">
+                        <Link to={`/mail/${mail.id}`}  >
+                            <span>{mail.from}</span>
+                            <span>{mail.subject}</span>
+                            {/* <span>{mail.}</span> */}
+                        </Link>
+                        <div className="btn-mail">
+                            <span onClick={() => OnRemoveMail(mail.id)}>remove</span>
+                            <span onClick={() => OnReadMail(mail.id)}>read</span>
+                        </div>
+                    </div></div>)
 
                 )}
         </div>
 
     )
 }
+

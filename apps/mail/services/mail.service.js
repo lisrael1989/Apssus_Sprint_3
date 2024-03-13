@@ -10,16 +10,19 @@ export const mailService = {
     remove,
     save,
     getEmptyMail,
-    // getDefaultFilter,
+    getDefaultFilter,
     // getFilterFromParams
 }
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
     // console.log('filterBy', filterBy)
     // filterBy = getDefaultFilter()
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            // console.log(mails)
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                mails = mails.filter(mail => regex.test(mail.from))
+            }
             return mails
         })
 }
@@ -41,8 +44,8 @@ function remove(mailId) {
     return storageService.remove(MAIL_KEY, mailId)
 }
 
-function getEmptyMail(from = '', to = '', subject = '', body = '', isRead, sentAt, removedAt,id = '') {
-    return { id, from, to, subject, body , isRead,sentAt,removedAt }
+function getEmptyMail(from = '', to = '', subject = '', body = '', isRead, sentAt, removedAt, id = '') {
+    return { id, from, to, subject, body, isRead, sentAt, removedAt }
 }
 
 function _createMails() {
@@ -63,16 +66,16 @@ function _createMails() {
     }
 }
 
-function _createMail(from, to, subject, body , isRead,sentAt,removedAt ) {
-    const mail = getEmptyMail(from, to, subject, body , isRead,sentAt,removedAt )
+function _createMail(from, to, subject, body, isRead, sentAt, removedAt) {
+    const mail = getEmptyMail(from, to, subject, body, isRead, sentAt, removedAt)
     mail.id = utilService.makeId()
     // mail.desc = utilService.makeLorem(100)
     return mail
 }
 
-// function getDefaultFilter() {
-//     return { txt: '', minSpeed: 50, desc: '' }
-// }
+function getDefaultFilter() {
+    return { txt: '' }
+}
 // function getFilterFromParams(searchParams = {}) {
 //     const defaultFilter = getDefaultFilter()
 //     return {
