@@ -24,6 +24,8 @@ export function NotePreview({ notes,onRemoveNote }) {
         ))}
       </ul>
     </article>
+
+
   );
 }
 
