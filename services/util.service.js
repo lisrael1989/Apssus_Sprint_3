@@ -3,9 +3,12 @@ export const utilService = {
     makeLorem,
     getRandomIntInclusive,
     getRandomColor,
+    loadFromStorage,
+    saveToStorage,
     padNum,
     getDayName,
     getMonthName,
+    animateCSS,
 }
 
 function makeId(length = 6) {
@@ -59,4 +62,30 @@ function getMonthName(date) {
         "July", "August", "September", "October", "November", "December"
     ]
     return monthNames[date.getMonth()]
+}
+
+function saveToStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value))
+}
+
+
+function loadFromStorage(key) {
+    const data = localStorage.getItem(key)
+    return (data) ? JSON.parse(data) : undefined
+}
+
+function animateCSS(el, animation = 'bounce') {
+    const prefix = 'animate__'
+    return new Promise((resolve) => {
+        const animationName = `${prefix}${animation}`
+        el.classList.add(`${prefix}animated`, animationName)
+
+        el.addEventListener('animationend', handleAnimationEnd, { once: true })
+
+        function handleAnimationEnd(event) {
+            event.stopPropagation()
+            // el.classList.remove(`${prefix}animated`, animationName)
+            resolve('Animation ended')
+        }
+    })
 }
