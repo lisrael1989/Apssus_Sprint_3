@@ -20,6 +20,8 @@
  background-color: rgb(165, 214, 243);
 }
 
+
+
 .note-content {
   margin-bottom: 10px;
   list-style-type: none;
@@ -34,16 +36,19 @@
   
 }
 
-.type-url img {
+.type-url {
   max-width: 100%; 
   height: auto; 
   display: block; 
-  margin-bottom: 8px;
+  margin-bottom: 30px;
 }
 
 .note-title {
   font-weight: bold;
+  font-size: 2em;
   color: #444;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .note-actions {

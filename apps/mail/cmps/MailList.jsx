@@ -9,12 +9,13 @@ export function MailList({ mails }) {
 
 
             {
-                mails && mails.map(mail => <il key={mail.id}>
+                mails && mails.map(mail => 
+                <li key={mail.id}>
                     <Link to={`/mail/${mail.id}`} className="line-mail">
                         <span>{mail.from}</span>
                         <span>{mail.subject}</span>
                     </Link>
-                </il>)
+                </li>)
 
             }
         </div>
