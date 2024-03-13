@@ -10,13 +10,17 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
-    getDefaultFilter,
-    getFilterFromParams
+    // getDefaultFilter,
+    // getFilterFromParams
 }
 
 
 function query() {
     return storageService.query(NOTE_KEY)
+    .then(notes => {
+        console.log(notes)
+        return notes
+    })
 }
 
 function get(noteId) {
@@ -31,17 +35,17 @@ function save(note) {
     if (note.id) {
         return storageService.put(NOTE_KEY, note)
     } else {
-        // note = _createnote(note.type, note.txt)
+        note = _createNote(note.type, note.info.txt)
         return storageService.post(NOTE_KEY, note)
     }
 }
 
-function getEmptyNote(type) {
+function getEmptyNote(type="") {
     return {
-      id: "",
+      id:"",
       type,
       info: {
-        txt: 'Fullstack Me Baby!', 
+        txt: '', 
       },
     };
   }
@@ -88,12 +92,13 @@ function _createNotes() {
         }
         }
         ]
+        utilService.saveToStorage(NOTE_KEY, notes);
 
     }
 }
 
     function _createNote(type) {
-        const note = getEmptyBook(title);
+        const note = getEmptyNote(type);
         note.id = utilService.makeId();
         return note;
       }
