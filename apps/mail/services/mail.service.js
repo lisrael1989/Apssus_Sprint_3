@@ -28,7 +28,7 @@ function save(mail) {
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
-        mail = _createMail(mail.from, mail.to,mail.subject,mail.body)
+        mail = _createMail(mail.from, mail.to, mail.subject, mail.body)
         return storageService.post(MAIL_KEY, mail)
     }
 }
@@ -41,35 +41,30 @@ function remove(mailId) {
     return storageService.remove(MAIL_KEY, mailId)
 }
 
-function getEmptyMail( from = '', to = '', subject = '', body = '',id='') {
-    return { id,from, to, subject, body }
+function getEmptyMail(from = '', to = '', subject = '', body = '', isRead, sentAt, removedAt,id = '') {
+    return { id, from, to, subject, body , isRead,sentAt,removedAt }
 }
 
 function _createMails() {
     let Mails = utilService.loadFromStorage(MAIL_KEY)
     if (!Mails || !Mails.length) {
         Mails = []
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
-        Mails.push(_createMail('momo@momo.com', 'user@appsus.com', 'Miss you!', 'Would love to catch up sometimes'))
+        Mails.push(_createMail('jane.doe@example.com', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), true, 1189323, null))
+        Mails.push(_createMail('alex.johnson@example.org', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
+        Mails.push(_createMail('samantha.brown@example.edu', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
+        Mails.push(_createMail('david.wilson@example.co', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), true, 1189323, null))
+        Mails.push(_createMail('emily.miller@example.info', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
+        Mails.push(_createMail('chris.taylor@example.biz', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
+        Mails.push(_createMail('rebecca.white@example.tv', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
+        Mails.push(_createMail('michael.harris@example.me', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
+        Mails.push(_createMail('sophia.martinez@example.io', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), true, 1189323, null))
 
         utilService.saveToStorage(MAIL_KEY, Mails)
     }
 }
 
-function _createMail(from, to, subject, body,) {
-    const mail = getEmptyMail(from, to, subject, body)
+function _createMail(from, to, subject, body , isRead,sentAt,removedAt ) {
+    const mail = getEmptyMail(from, to, subject, body , isRead,sentAt,removedAt )
     mail.id = utilService.makeId()
     // mail.desc = utilService.makeLorem(100)
     return mail

@@ -1,26 +1,28 @@
  /* mail list */
- .mail-list-container{
+ .mail-list-container {
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    height: 100%;
  }
 
 
- div.mail-list{
+ div.mail-list {
     display: flex;
     flex-direction: column;
     align-items: right;
-    border: 1px solid rgba(0, 0, 0, 0.12) ;
-    background-color:#ffffff ;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: #ffffff;
     border-radius: 10px;
     width: 80%;
+    bottom: 0;
  }
- 
- .line-mail{
+
+ .line-mail {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom:1px solid rgba(0, 0, 0, 0.32) ;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.32);
     padding-right: 5px;
     padding-bottom: 5px;
     padding-top: 10px;
@@ -29,6 +31,9 @@
 
  }
 
+ .read{
+   background-color: beige;
+ }
  /* .line-mail span{
     display: flex;
     align-items: center;
