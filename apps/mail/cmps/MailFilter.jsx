@@ -1,7 +1,7 @@
 
 export function MailFilter(){
 
-    
+
 
 
     return <div className="header-mail">
@@ -9,6 +9,7 @@ export function MailFilter(){
             <span>inbox</span>
             <span>sent</span>
         </nav>
+        <div className="search-input">
         <form onSubmit=''>
         <input type="text" 
         id="from"
@@ -17,5 +18,6 @@ export function MailFilter(){
         onChange=''
         placeholder="search"/>
         </form>
+        </div>
     </div>
 }

@@ -11,7 +11,7 @@ export const noteService = {
     save,
     getEmptyNote,
     getDefaultFilter,
-    getFilterFromParams
+    getFilterFromParams,
 }
 
 
