@@ -10,18 +10,34 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
-    // getDefaultFilter,
+    getDefaultFilter,
     // getFilterFromParams
 }
 
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
     return storageService.query(NOTE_KEY)
     .then(notes => {
-        console.log(notes)
+        if (filterBy.title) {
+            const regex = new RegExp(filterBy.title, "i");
+            notes = notes.filter((note) => regex.test(note.info.title));
+          }
+          if (filterBy.txt) {
+            notes = books.filter((note) => {
+              return note.info.txt >= filterBy.txt;
+            });
+          }
+          
         return notes
     })
 }
+
+function getDefaultFilter() {
+    return {
+      title: "",
+      txt: "",
+    };
+  }
 
 function get(noteId) {
     return storageService.get(NOTE_KEY, noteId)
