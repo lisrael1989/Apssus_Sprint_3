@@ -1,5 +1,6 @@
 const { useState, useEffect } = React;
 import { noteService} from "./../services/note.service.js";
+import { utilService} from "../../../services/util.service.js";
 import {
     eventBusService,
     showErrorMsg,
@@ -41,6 +42,19 @@ export function NoteIndex() {
           });
       }
 
+      function onDuplicateNote(noteToDuplicate){
+        const newNote = { ...noteToDuplicate, id: utilService.makeId(), createdAt: Date.now() };
+        delete newNote.id;
+        noteService.save(newNote).then(savedNote => {
+          setNotes((prevNotes) => [...prevNotes, savedNote]);
+          showSuccessMsg('Note duplicated successfully');
+        }).catch(err => {
+          console.error('Error duplicating note', err);
+          showErrorMsg('Error duplicating note');
+        });
+      }
+     
+
       function onSetFilter(fieldsToUpdate) {
         setFilterBy((prevFilter) => ({ ...prevFilter, ...fieldsToUpdate }));
       }
@@ -55,7 +69,6 @@ export function NoteIndex() {
     return (
 
     <section>
-
         <NoteHeader
         onSetFilter={onSetFilter}
             filterBy={{ filterBy }}/>
@@ -63,9 +76,9 @@ export function NoteIndex() {
         <NotePreview
             notes={notes}
             onRemoveNote={onRemoveNote}
+            onDuplicateNote={onDuplicateNote}
         />
-        
-     
+    
         <UserMsg msg={userMsg} />
         </section>
     )

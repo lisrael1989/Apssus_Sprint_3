@@ -6,7 +6,6 @@
 text-decoration: none;
 }
 
-
 .note-item {
   list-style-type: none;
   background: #f0f0f0; 
@@ -17,8 +16,7 @@ text-decoration: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
  margin-bottom: 30px;
  background-color: rgb(165, 214, 243);
-}
-
+} 
 
 .note-content {
   margin-bottom: 10px;
@@ -61,7 +59,8 @@ text-decoration: none;
 .edit-btn,
 .color-btn, 
 .pinned-btn,
-.send-email-btn {
+.send-email-btn,
+.duplicate-btn {
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
