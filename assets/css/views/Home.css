@@ -14,17 +14,17 @@
   transform: scale();
 padding: 0 50px;
   background-color: transparent;
-  animation: bounce;
-  animation-duration: 2s;
+
 }
+
 .keep-img, .gmail-img{
-  width: 100px;
-  height: 100px;
+  max-width: 100px;
+  max-height: 100px;
 }
 
 .home-title {
   top: 0;
-  
+
   font-size: 3em;
   border-radius: 5px;
   text-align: center;
