@@ -1,0 +1,37 @@
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.keep-img-header{
+  max-height: 70px;
+  max-width: 50px;
+  margin-left: 30px;
+}
+
+.keep-btn{
+  margin-right: 30px;
+  /* margin-top: 20px; */
+  cursor: pointer;
+  max-height: 70px;
+  max-width: 50px;
+}
+
+.title{
+  /* margin-top: 20px; */
+  font-size: 1.5em;
+  border-radius: 5px;
+  height: 40px;
+  width: 700px;
+ border:1px solid rgb(228, 228, 228);
+ box-shadow: 1px 1px 3px 1px rgb(147, 147, 147);
+}
+
+
+
+
+
+

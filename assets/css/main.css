@@ -20,6 +20,7 @@
 /* Cmps */
 @import './cmps/UserMsg.css';
 @import './cmps/AppHeader.css';
+@import './cmps/NoteHeader.css';
 
 /* Note */
 @import "./cmps/note-preview.css";
