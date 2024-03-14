@@ -1,0 +1,42 @@
+
+.home {
+  margin-top: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.gmail-img{
+  background-color: transparent;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.keep-img {
+  margin: 20px;
+  max-width: 100px;
+  max-height: 100px;
+  box-shadow: 1px 3px 2px 3px rgb(224, 222, 222);
+
+}
+
+.home-title {
+  top: 0;
+  font-size: 3em;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 10px;
+}
+
+.home-title span {
+  font-size: 2em;
+  color: rgb(223, 15, 64);
+}
+
+
+.sub-title-home { 
+  font-size: 2em;
+}
