@@ -7,14 +7,26 @@
  }
 
 
- div.mail-list {
+ .mail-Msg {
     display: flex;
     flex-direction: column;
     align-items: right;
     border: 1px solid rgba(0, 0, 0, 0.12);
     background-color: #ffffff;
     border-radius: 10px;
-    width: 95%;
+    width: 100%;
+    bottom: 0;
+    padding: 15px;
+ }
+
+ .mail-list {
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 100%;
     bottom: 0;
  }
 
@@ -28,37 +40,83 @@
     padding-top: 10px;
     padding-left: 10px;
     font-size: 20px;
-
+    flex-grow: 1
  }
 
- .read{
-   background-color: rgba(215, 234, 255, 0.473);
+
+ .read {
+    background-color: rgba(215, 234, 255, 0.473);
  }
- /* .line-mail span{
+
+
+
+ .btn-mail {
+    display: flex;
+    gap: 10px;
+ }
+
+
+ .titles-line {
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
- } */
-
- .btn-mail{
-   display: flex;
-   gap: 10px;
+    gap: 10vw;
  }
 
-/* 
- .line-mail span{
-   si
-  justify-content: center;
- } */
-
- .titles-line{
-   text-align: center;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   gap: 10vw;
+ .mail-main {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(202, 223, 248, 0.524);
  }
 
- .titles-line{
-   
+ .mail-body {
+    font-size: 18px;
+    color: #00000089;
+ }
+
+ .more-Options {
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+    padding: 0.5vw;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+ }
+
+ .send {
+    background-color: rgb(126, 171, 216);
+    border-radius: 15px;
+    padding: 20px;
+ }
+
+
+
+ .line-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+ }
+
+ /* .name-mail{
+   margin-right: 50px;
+ } */
+ /* .name-mail{
+
+} */
+
+ .line-mail a {
+    display: flex;
+    gap: 10vw;
+    align-items: flex-start;
+    justify-content: flex-start;
+ }
+
+ .subject-mail {
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
  }

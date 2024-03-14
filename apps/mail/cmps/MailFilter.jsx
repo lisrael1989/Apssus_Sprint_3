@@ -22,10 +22,7 @@ export function MailFilter({ onSetFilter, filterBy }) {
 
 
     return <div className="header-mail">
-        <nav className="nav-header">
-            <span>inbox</span>
-            <span>sent</span>
-        </nav>
+       
         <div className="search-input">
             <form onSubmit={onFilter}>
                 <input type="text"

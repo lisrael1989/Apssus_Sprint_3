@@ -1,5 +1,5 @@
 const { useState, useEffect } = React
-const { Route, Routes, useLocation } = ReactRouterDOM
+const { Route, Routes, useLocation, Link } = ReactRouterDOM
 
 
 
@@ -12,7 +12,7 @@ export function MailIndex() {
 
     const [mails, setMails] = useState(null)
     const location = useLocation()
-
+    const [selectedMail, setSelectedMail] = useState(null)
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
 
 
@@ -43,6 +43,12 @@ export function MailIndex() {
         })
     }
 
+    function onSelectMail(Mail) {
+        console.log('selected Mail', Mail)
+        setSelectedMail(Mail)
+    }
+
+
 
     function OnRemoveMail(mailId) {
         mailService.get(mailId).then((mail) => {
@@ -58,18 +64,28 @@ export function MailIndex() {
         <MailFilter
             onSetFilter={onSetFilter}
             filterBy={{ txt }} />
+        <div className="mail-main">
+            <div className="more-Options">
+                <h1 className="send fa-solid fa-pen"></h1>
+                <Link to='/mail'><h1 className="fa-solid fa-inbox"></h1></Link>
+                <h1 className="fa-solid fa-trash-can"></h1>
+                <h1 className="fa-regular fa-paper-plane"></h1>
+            </div>
 
-        <div className="mail-list-container">
-            {location.pathname === "/mail" ?
-                <MailList mails={mails}
-                    OnRemoveMail={OnRemoveMail}
-                    OnReadMail={OnReadMail} /> :
-                <Routes>
-                    <Route path=":mailId" element={<MailPreview />} />
-                </Routes>
-            }
+            <div className="mail-list-container">
+                {location.pathname === "/mail" ?
+                    <MailList mails={mails}
+                        OnRemoveMail={OnRemoveMail}
+                        OnReadMail={OnReadMail}
+                        onSelectMail={onSelectMail}
+                        selectedMail={selectedMail} /> :
+                    <Routes>
+                        <Route path=":mailId" element={<MailPreview />} />
+                    </Routes>
+                }
+            </div>
         </div>
-    </div>
+    </div >
 
     )
 }

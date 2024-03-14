@@ -7,11 +7,12 @@
 }
 
 
-nav.nav-header{
+/* .nav-header{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-}
+    justify-content: center;
+    align-items: center;
+} */
 
 .search-input{
     flex-grow: 1;
@@ -30,3 +31,8 @@ nav.nav-header{
     background-color: rgb(209, 245, 255);
 }
 /* .nav-header */
+
+/* .squere-check{
+    display: flex;
+    flex-direction: column;
+} */
