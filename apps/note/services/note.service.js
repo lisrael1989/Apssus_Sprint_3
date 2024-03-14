@@ -118,7 +118,7 @@ function _createNotes() {
             backgroundColor: '#00d'
             },
             info: {
-            txt: 'HAPPY TO BE HERE 😎'
+            txt: 'HAPPY TO BE HERE 😎 i hope you too'
             }
             },
             {
@@ -132,7 +132,19 @@ function _createNotes() {
                 style: {
                 backgroundColor: '#00d'
                 }
-                }
+                },
+                {
+                  id: 'n106',
+                  type: 'NoteImg',
+                  isPinned: false,
+                  info: {
+                      url: 'https://www.liveabout.com/thmb/ohIr79XSDOPxnbdkY5WdoUQdCEw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/trumpmeme-3-5c51da71c9e77c00016f38da.jpg',
+                      title: 'I miss you all from sprint 2'
+                  },
+                  style: {
+                  backgroundColor: '#00d'
+                  }
+                  }
         ]
         utilService.saveToStorage(NOTE_KEY, notes);
 
