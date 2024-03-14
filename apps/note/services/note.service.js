@@ -48,15 +48,22 @@ function remove(noteId) {
 }
 
 function save(note) {
-    if (note.id) {
-        return storageService.put(NOTE_KEY, note)
-    } else {
-        // note = _createNote(note.type, note.info.txt)
-        note.id = utilService.makeId();
-        note.createdAt = Date.now();
-        return storageService.post(NOTE_KEY, note)
-    }
+  console.log('Saving note:', note); // Log the note being saved
+
+  if (note.id) {
+      return storageService.put(NOTE_KEY, note)
+          .then(() => console.log(`Note ${note.id} updated successfully.`)) // Log success
+          .catch(err => console.error(`Error updating note ${note.id}:`, err)); // Log errors
+  } else {
+      note.id = utilService.makeId();
+      note.createdAt = Date.now();
+      note.style = note.style || { backgroundColor: '#ffffff' };
+      return storageService.post(NOTE_KEY, note)
+          .then(() => console.log(`Note ${note.id} created successfully.`)) // Log success
+          .catch(err => console.error(`Error creating note:`, err)); // Log errors
+  }
 }
+
 
 function getEmptyNote(type="") {
     return {
@@ -79,7 +86,7 @@ function _createNotes() {
         type: 'NoteTxt',
         isPinned: true,
         style: {
-        backgroundColor: '#00d'
+        backgroundColor: '#f00eea'
         },
         info: {
         txt: 'Fullstack Me Baby!'
@@ -94,7 +101,7 @@ function _createNotes() {
         title: 'Love this game'
         },
         style: {
-        backgroundColor: '#00d'
+        backgroundColor: '#f0ad4e'
         }
         },
         {
@@ -115,7 +122,7 @@ function _createNotes() {
             type: 'NoteTxt',
             isPinned: true,
             style: {
-            backgroundColor: '#00d'
+            backgroundColor: '#f0addd'
             },
             info: {
             txt: 'HAPPY TO BE HERE 😎 i hope you too'
@@ -130,7 +137,7 @@ function _createNotes() {
                     title: 'Sprint 3 be like '
                 },
                 style: {
-                backgroundColor: '#00d'
+                backgroundColor: '#f0edad'
                 }
                 },
                 {
@@ -142,7 +149,7 @@ function _createNotes() {
                       title: 'I miss you all from sprint 2'
                   },
                   style: {
-                  backgroundColor: '#00d'
+                  backgroundColor: '#f0aaaa'
                   }
                   }
         ]
