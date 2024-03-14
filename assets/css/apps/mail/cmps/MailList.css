@@ -9,12 +9,12 @@
 
 
  .mail-compose-container{
-   position: absolute;
+   position: fixed;
    display: flex;
    background-color: #fbfbfb;
-   padding: 10px;
    bottom: 0%;
    right: 0;
+   
  }
  .mail-compose form{
    display: flex;
