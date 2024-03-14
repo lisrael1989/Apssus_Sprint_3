@@ -19,18 +19,31 @@
 .keep-btn{
   margin-right: 50px;
   cursor: pointer;
-  max-height: 70px;
-  max-width: 50px;
-  margin-bottom: 10px;
+  max-height: 100px;
+  max-width: 60px;
+ 
+}
+
+.search-header {
+  flex-grow: 1; 
+  margin: 0 100px;
 }
 
 .title{
   font-size: 1.5em;
   border-radius: 5px;
-  height: 40px;
-  max-width: 100%;
- border:1px solid rgb(228, 228, 228);
- box-shadow: 1px 1px 3px 1px rgb(147, 147, 147);
+  height: 50px;
+  width: 100%;
+  border:1px solid rgb(228, 228, 228);
+  box-shadow: 1px 1px 3px 1px rgb(147, 147, 147);
+}
+
+.keep-name{
+  margin-left: 10px;
+  font-size:2em;
+  color: gray;
+  font-family: lato-light;
+  
 }
 
 .nav-links {

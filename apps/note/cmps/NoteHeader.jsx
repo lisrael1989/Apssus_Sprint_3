@@ -37,7 +37,8 @@ export function NoteHeader({ onSetFilter, filterBy }) {
             title="go back to notes"
           ></img>
       </Link>
-
+      <h1 className="keep-name">keep</h1>
+      
       <form className="search-header" onSubmit={onFilter}>
         <label htmlFor="title"></label>
         <input
