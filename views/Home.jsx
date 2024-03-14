@@ -16,14 +16,14 @@ export function Home() {
       <Link to="/mail">
           <img
             className="gmail-img "
-            src="assets\img\gmail.png"
+            src="./assets/img/gmail.png"
           ></img>
           </Link>
 
           <Link to="/note">
           <img
             className="keep-img"
-            src="assets\img\keep.png"
+            src="./assets/img/keep.png"
           ></img>
       </Link>
       </div>
