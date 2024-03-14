@@ -23,8 +23,8 @@ function query(filterBy = getDefaultFilter()) {
             notes = notes.filter((note) => regex.test(note.info.title));
           }
           if (filterBy.txt) {
-            notes = books.filter((note) => {
-              return note.info.txt >= filterBy.txt;
+            notes = notes.filter((note) => {
+              return note.info.txt.includes (filterBy.txt);
             });
           }
           
@@ -51,7 +51,9 @@ function save(note) {
     if (note.id) {
         return storageService.put(NOTE_KEY, note)
     } else {
-        note = _createNote(note.type, note.info.txt)
+        // note = _createNote(note.type, note.info.txt)
+        note.id = utilService.makeId();
+        note.createdAt = Date.now();
         return storageService.post(NOTE_KEY, note)
     }
 }
