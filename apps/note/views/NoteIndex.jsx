@@ -68,7 +68,7 @@ export function NoteIndex() {
 
     return (
 
-    <section>
+    <section className="note-index">
         <NoteHeader
         onSetFilter={onSetFilter}
             filterBy={{ filterBy }}/>

@@ -4,8 +4,8 @@ export function NotePreview({ notes, onRemoveNote, onDuplicateNote }) {
  
 
   return (
-    <article className="note-list">
-      <ul>
+    
+      <ul className="note-list">
         {notes && notes.map(note => (
           <li key={note.id} className="note-item">
 
@@ -20,7 +20,7 @@ export function NotePreview({ notes, onRemoveNote, onDuplicateNote }) {
               <button className="color-btn fa-solid fa-palette"></button>
               <button className="remove-btn fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></button>
               <button className="pinned-btn fa-solid fa-thumbtack"></button>
-              <button className="send-email-btn fa-solid fa-envelope"></button>
+              {/* <button className="send-email-btn fa-solid fa-envelope"></button> */}
               <button
                 className="duplicate-btn fa-solid fa-copy"
                 onClick={() => onDuplicateNote(note)}
@@ -30,7 +30,7 @@ export function NotePreview({ notes, onRemoveNote, onDuplicateNote }) {
           </li>
         ))}
       </ul>
-    </article>
+   
   );
 }
 
