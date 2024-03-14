@@ -1,7 +1,10 @@
 const { Link } = ReactRouterDOM;
+import { AppHeader } from "../cmps/AppHeader.jsx"
 
 export function Home() {
   return (
+    <React.Fragment>
+    <AppHeader/>
     <section className="home  ">
       <div>
         <h1 className="home-title">
@@ -25,5 +28,7 @@ export function Home() {
       </Link>
       </div>
     </section>
+    </React.Fragment>
+
   );
 }
