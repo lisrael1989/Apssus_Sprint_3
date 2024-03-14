@@ -8,6 +8,20 @@
  }
 
 
+ .mail-compose-container{
+   position: absolute;
+   display: flex;
+   background-color: #fbfbfb;
+   padding: 10px;
+   bottom: 0%;
+   right: 0;
+ }
+ .mail-compose form{
+   display: flex;
+   flex-direction:column;
+   
+ }
+
  .mail-Msg {
     display: flex;
     flex-direction: column;

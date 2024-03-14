@@ -17,6 +17,8 @@ export function MailIndex() {
     const [selectedMail, setSelectedMail] = useState(null)
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [isCompose, setCompose] = useState(false)
+    const myUser = "user@appsus.com"
+
 
     function opemCompose() {
         if (isCompose) {
@@ -25,6 +27,16 @@ export function MailIndex() {
             setCompose(true)
         }
     }
+
+    function sendMail(newMail) {
+        newMail.from = myUser
+        mailService.save(newMail)
+            .then((savedmail) => {
+                setMails(prevMails => prevMails.map(mail => mail.id === savedmail.id ? savedmail : mail))
+
+            })
+    }
+
 
     useEffect(() => {
         loadMails()
@@ -108,6 +120,14 @@ export function MailIndex() {
                         onSelectMail={onSelectMail}
                         selectedMail={selectedMail} />
                 )
+            case '/mail/write':
+                return (
+                    <MailList mails={mails.filter(m => !m.isRemove && m.to === myUser)}
+                        OnRemoveMail={OnRemoveMail}
+                        OnReadMail={OnReadMail}
+                        onSelectMail={onSelectMail}
+                        selectedMail={selectedMail} />
+                )
             default:
                 return (
                     <Routes>
@@ -125,8 +145,8 @@ export function MailIndex() {
             filterBy={{ txt }} />
         <div className="mail-main">
 
-            <MailFolderList 
-            opemCompose={opemCompose}
+            <MailFolderList
+                opemCompose={opemCompose}
             />
             {/* <div className="more-Options">
                 <h1 className="send fa-solid fa-pen"></h1>
@@ -139,7 +159,9 @@ export function MailIndex() {
                 {mails ? getMailList() : null}
             </div>
         </div>
-        {isCompose ? <MailCompose/>:'' }
+        {isCompose ? <MailCompose
+            onClose={() => setCompose(false)}
+            onSend={sendMail} /> : ''}
     </div >
 
     )
