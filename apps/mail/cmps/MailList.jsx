@@ -5,6 +5,7 @@ import { mailService } from "../services/mail.service.js"
 
 
 export function MailList({ mails, OnRemoveMail, OnReadMail, onSelectMail, selectedMail }) {
+    let unredMsg = mails.filter(mail => !mail.isRead).length
 
     if (!mails) return <div>loading...</div>
     if (mails.length === 0) return <div>Empty😎</div>
@@ -16,13 +17,15 @@ export function MailList({ mails, OnRemoveMail, OnReadMail, onSelectMail, select
     return (
         <div className="mail-list">
 
-
+            <div className="header-of-list">
+                <span>mails unread:{unredMsg}</span>
+            </div>
             {
                 mails.map(mail => (<div className={mail.isRead ? 'read' : ''} key={mail.id} >
                     <div className="line-container">
                         <div onClick={() => { onSelectMail(mail) }} id='line-squere' className={selectedMail === mail.id ? "squere-check fa-regular fa-square-check" : "squere-check fa-regular fa-square"}></div>
                         <div className="line-mail">
-                            <Link to={`/mail/${mail.id}`} style={{width: '100%'}} >
+                            <Link to={`/mail/${mail.id}`} style={{ width: '100%' }} >
 
                                 <span className="name-mail">{mail.from}</span>
 

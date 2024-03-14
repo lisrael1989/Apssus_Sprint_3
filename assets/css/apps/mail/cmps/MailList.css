@@ -148,3 +148,12 @@
    flex-grow: 1;
 
  }
+
+ .header-of-list {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding-left: 10px;
+   padding-top: 20px;
+   padding-bottom: 20px;
+}
