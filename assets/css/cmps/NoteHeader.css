@@ -1,3 +1,7 @@
+.nav-container{
+  position: relative;
+  display: inline-block;
+}
 
 .note-header {
   display: flex;
@@ -9,28 +13,67 @@
 .keep-img-header{
   max-height: 70px;
   max-width: 50px;
-  margin-left: 30px;
+  margin-left: 50px;
 }
 
 .keep-btn{
-  margin-right: 30px;
-  /* margin-top: 20px; */
+  margin-right: 50px;
   cursor: pointer;
-  max-height: 70px;
-  max-width: 50px;
+  max-height: 100px;
+  max-width: 60px;
+ 
+}
+
+.search-header {
+  flex-grow: 1; 
+  margin: 0 100px;
 }
 
 .title{
-  /* margin-top: 20px; */
   font-size: 1.5em;
   border-radius: 5px;
-  height: 40px;
-  width: 700px;
- border:1px solid rgb(228, 228, 228);
- box-shadow: 1px 1px 3px 1px rgb(147, 147, 147);
+  height: 50px;
+  width: 100%;
+  border:1px solid rgb(228, 228, 228);
+  box-shadow: 1px 1px 3px 1px rgb(147, 147, 147);
 }
 
+.keep-name{
+  margin-left: 10px;
+  font-size:2em;
+  color: gray;
+  font-family: lato-light;
+  
+}
 
+.nav-links {
+  position: absolute;
+  top: 100%; 
+  width: 100%;
+  right: 20%;
+  display: flex;
+  flex-direction: column; 
+  background-color: #f2f1f1; 
+  box-shadow: 2px 5px 5px 5px rgba(184, 169, 169, 0.477); 
+  z-index: 1000; 
+  border-radius: 5px;
+}
+
+.nav-links a {
+  padding: 5px ;
+  margin-right: 50px;
+}
+.nav-links a:hover {
+ color: rgb(177, 178, 183);
+}
+
+.gmail-note-header{
+  min-width: 35px;
+}
+
+.keep-nev-btn {
+  width: 30px;
+}
 
 
 

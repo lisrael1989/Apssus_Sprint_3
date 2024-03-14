@@ -15,15 +15,15 @@ export function Home() {
       <div>
       <Link to="/mail">
           <img
-            className="gmail-img animate__animated animate__bounce"
-            src="assets\img\gmail.png"
+            className="gmail-img "
+            src="./assets/img/gmail.png"
           ></img>
           </Link>
 
           <Link to="/note">
           <img
-            className="keep-img animate__animated animate__bounce"
-            src="assets\img\keep.png"
+            className="keep-img"
+            src="./assets/img/keep.png"
           ></img>
       </Link>
       </div>

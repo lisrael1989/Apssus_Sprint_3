@@ -10,8 +10,9 @@
 @import './basics/layout.css';
 
 /* Views */
-@import './views/home.css';
+@import 'assets/css/views/Home.css';
 @import './views/about.css';
+
 @import './apps/note/views/NoteIndex.css';
 @import './apps/mail/views/MailIndex.css';
 
