@@ -7,19 +7,21 @@ import {
   } from "../../../services/event-bus.service.js"
 import { NotePreview } from "./NotePreview.jsx";
 import { UserMsg } from "../cmps/UserMsg.jsx";
+import { NoteHeader } from "../cmps/NoteHeader.jsx";
 
 
 export function NoteIndex() {
     const [notes, setNotes] = useState(null);
+    const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter());
     const [userMsg, setUserMsg] = useState("");
 
     useEffect(() => {
         loadNotes()
-    }, [])
+    }, [ [filterBy]])
 
 
     function loadNotes() {
-        noteService.query()
+        noteService.query(filterBy)
             .then((notes) => {
                 setNotes(notes)
             })
@@ -39,6 +41,10 @@ export function NoteIndex() {
           });
       }
 
+      function onSetFilter(fieldsToUpdate) {
+        setFilterBy((prevFilter) => ({ ...prevFilter, ...fieldsToUpdate }));
+      }
+
       function flashMsg(txt) {
         setUserMsg(txt);
         setTimeout(() => {
@@ -49,8 +55,11 @@ export function NoteIndex() {
     return (
 
     <section>
-        <h1 className="note-title">Note app</h1>
-        
+
+        <NoteHeader
+        onSetFilter={onSetFilter}
+            filterBy={{ filterBy }}/>
+
         <NotePreview
             notes={notes}
             onRemoveNote={onRemoveNote}

@@ -21,8 +21,6 @@ export function MailIndex() {
     }, [filterBy])
 
     function onSetFilter(fieldsToUpdate) {
-
-
         setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
     }
 
