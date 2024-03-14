@@ -10,16 +10,19 @@ export const mailService = {
     remove,
     save,
     getEmptyMail,
-    // getDefaultFilter,
+    getDefaultFilter,
     // getFilterFromParams
 }
 
-function query() {
+function query(filterBy = getDefaultFilter()) {
     // console.log('filterBy', filterBy)
     // filterBy = getDefaultFilter()
     return storageService.query(MAIL_KEY)
         .then(mails => {
-            // console.log(mails)
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                mails = mails.filter(mail => regex.test(mail.from))
+            }
             return mails
         })
 }
@@ -41,38 +44,56 @@ function remove(mailId) {
     return storageService.remove(MAIL_KEY, mailId)
 }
 
-function getEmptyMail(from = '', to = '', subject = '', body = '', isRead, sentAt, removedAt,id = '') {
-    return { id, from, to, subject, body , isRead,sentAt,removedAt }
+function getEmptyMail(from = '', to = '', subject = '', body = '', isRead, sentAt, removedAt, id = '') {
+    return { id, from, to, subject, body, isRead, sentAt, removedAt }
 }
 
 function _createMails() {
     let Mails = utilService.loadFromStorage(MAIL_KEY)
     if (!Mails || !Mails.length) {
         Mails = []
-        Mails.push(_createMail('jane.doe@example.com', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), true, 1189323, null))
-        Mails.push(_createMail('alex.johnson@example.org', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
-        Mails.push(_createMail('samantha.brown@example.edu', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
-        Mails.push(_createMail('david.wilson@example.co', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), true, 1189323, null))
-        Mails.push(_createMail('emily.miller@example.info', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
-        Mails.push(_createMail('chris.taylor@example.biz', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
-        Mails.push(_createMail('rebecca.white@example.tv', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
-        Mails.push(_createMail('michael.harris@example.me', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), false, 1189323, null))
-        Mails.push(_createMail('sophia.martinez@example.io', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(100), true, 1189323, null))
+        Mails.push(_createMail('jane', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Sep 14 2023")), null))
+        Mails.push(_createMail('alex', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Oct 12 2023")), null))
+        Mails.push(_createMail('samantha', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Aug 05 2023")), null))
+        Mails.push(_createMail('david', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Jul 22 2023")), null))
+        Mails.push(_createMail('emily', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Jun 19 2023")), null))
+        Mails.push(_createMail('chris', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("May 30 2023")), null))
+        Mails.push(_createMail('rebecca', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Apr 25 2023")), null))
+        Mails.push(_createMail('michael', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Mar 15 2023")), null))
+        Mails.push(_createMail('sophia', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Feb 09 2023")), null))
+        Mails.push(_createMail('jane', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Sep 14 2023")), null))
+        Mails.push(_createMail('alex', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Oct 12 2023")), null))
+        Mails.push(_createMail('samantha', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Aug 05 2023")), null))
+        Mails.push(_createMail('david', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Jul 22 2023")), null))
+        Mails.push(_createMail('emily', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Jun 19 2023")), null))
+        Mails.push(_createMail('chris', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("May 30 2023")), null))
+        Mails.push(_createMail('rebecca', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Apr 25 2023")), null))
+        Mails.push(_createMail('michael', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Mar 15 2023")), null))
+        Mails.push(_createMail('sophia', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Feb 09 2023")), null))
+        Mails.push(_createMail('jane', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Sep 14 2023")), null))
+        Mails.push(_createMail('alex', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Oct 12 2023")), null))
+        Mails.push(_createMail('samantha', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Aug 05 2023")), null))
+        Mails.push(_createMail('david', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Jul 22 2023")), null))
+        Mails.push(_createMail('emily', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Jun 19 2023")), null))
+        Mails.push(_createMail('chris', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("May 30 2023")), null))
+        Mails.push(_createMail('rebecca', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Apr 25 2023")), null))
+        Mails.push(_createMail('michael', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Mar 15 2023")), null))
+        Mails.push(_createMail('sophia', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Feb 09 2023")), null))
 
         utilService.saveToStorage(MAIL_KEY, Mails)
     }
 }
 
-function _createMail(from, to, subject, body , isRead,sentAt,removedAt ) {
-    const mail = getEmptyMail(from, to, subject, body , isRead,sentAt,removedAt )
+function _createMail(from, to, subject, body, isRead, sentAt, removedAt) {
+    const mail = getEmptyMail(from, to, subject, body, isRead, sentAt, removedAt)
     mail.id = utilService.makeId()
     // mail.desc = utilService.makeLorem(100)
     return mail
 }
 
-// function getDefaultFilter() {
-//     return { txt: '', minSpeed: 50, desc: '' }
-// }
+function getDefaultFilter() {
+    return { txt: '' }
+}
 // function getFilterFromParams(searchParams = {}) {
 //     const defaultFilter = getDefaultFilter()
 //     return {

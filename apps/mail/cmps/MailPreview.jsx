@@ -16,8 +16,11 @@ export function MailPreview() {
 
     if (!mail) return <div>Loading...</div>
     return (
-        <div className="mail-list">
+        <div className="mail-Msg">
             <h2>subject:{mail.subject}</h2>
+            <span>{mail.sentAt}</span>
+            <span className="fa-solid fa-user"></span>
+            <span>{mail.from}</span>
             <p>{mail.body}</p>
         </div>
     )
