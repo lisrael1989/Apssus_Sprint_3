@@ -5,6 +5,10 @@ const { useState, useEffect } = React
 
 export function MailFilter({ onSetFilter, filterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+    const [isNavVisible, setIsNavVisible] = useState(false);
+    const toggleNavBar = () => {
+        setIsNavVisible(!isNavVisible);
+    }
     useEffect(() => {
         onSetFilter(filterByToEdit)
     }, [filterByToEdit])
@@ -36,11 +40,26 @@ export function MailFilter({ onSetFilter, filterBy }) {
                     placeholder="search" />
             </form>
         </div>
-        <nav>
-            <NavLink className="fa-solid fa-house" to="/"></NavLink>
-            <NavLink className="fa-solid fa-address-card" to="/about"></NavLink>
-            <NavLink className="fa-solid fa-envelope-open" to="/mail"></NavLink>
-            <NavLink className="fa-solid fa-note-sticky" to="/note"></NavLink>
+        <div className="nav-container">
+        <img className="keep-btn" 
+        src="assets\img\keep-header-btn.png" 
+        title="navigation to other pages"
+        alt=""
+        onClick={toggleNavBar}/>
+
+        {isNavVisible &&  (
+        <nav className="nav-links">
+            <NavLink className=" nav-icon fa-solid fa-house" to="/"></NavLink>
+            <NavLink className=" nav-icon fa-solid fa-address-card" to="/about"></NavLink>
+            <NavLink to="/mail"><img
+            src="assets\img\gmail.png" className="gmail-note-header"
+        ></img></NavLink>
+            <NavLink to="/note"> <img
+            className="keep-nev-btn"
+          src="assets\img\keep.png"></img>
+            </NavLink>
         </nav>
-    </div>
+        )}
+        </div>
+        </div>
 }
