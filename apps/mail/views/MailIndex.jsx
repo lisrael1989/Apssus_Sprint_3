@@ -7,6 +7,7 @@ import { MailList } from "../cmps/MailList.jsx";
 import { MailFilter } from "../cmps/MailFilter.jsx";
 import { mailService } from "../services/mail.service.js"
 import { MailPreview } from '../cmps/MailPreview.jsx'
+import { MailFolderList } from '../cmps/MailFolderList.jsx'
 
 export function MailIndex() {
 
@@ -42,8 +43,11 @@ export function MailIndex() {
     }
 
     function onSelectMail(Mail) {
-        console.log('selected Mail', Mail)
-        setSelectedMail(Mail)
+        if(selectedMail === Mail.id){
+            setSelectedMail(null)
+        } else{
+            setSelectedMail(Mail.id)
+        }
     }
 
 
@@ -56,6 +60,54 @@ export function MailIndex() {
             mailService.save(mail)
         })
     }
+
+    function OnDeletePermanent(mailId) {
+        mailService.get(mailId).then((mail) => {
+            mail.isRemove = Date.now()
+            const updatedMails = mails.map(m => m.id !== mailId)
+            setMails(updatedMails)
+            mailService.remove(mailId)
+        })
+    }
+
+    function getMailList(){
+        const route = location.pathname
+        const myUser = "user@appsus.com"
+        
+        switch(route){
+            case '/mail':
+                return (
+                    <MailList mails={mails.filter(m=>!m.isRemove && m.to === myUser)}
+                    OnRemoveMail={OnRemoveMail}
+                    OnReadMail={OnReadMail}
+                    onSelectMail={onSelectMail}
+                    selectedMail={selectedMail} />
+                )
+            case '/mail/trash':
+                return (
+                    <MailList mails={mails.filter(m=>m.isRemove)}
+                    OnRemoveMail={OnDeletePermanent}
+                    OnReadMail={OnReadMail}
+                    onSelectMail={onSelectMail}
+                    selectedMail={selectedMail} />
+                )
+            case '/mail/send':
+                return (
+                    <MailList mails={mails.filter(m=>!m.isRemove && m.from === myUser)}
+                    OnRemoveMail={OnRemoveMail}
+                    OnReadMail={OnReadMail}
+                    onSelectMail={onSelectMail}
+                    selectedMail={selectedMail} />
+                )
+            default:
+                return (
+                    <Routes>
+                        <Route path=":mailId" element={<MailPreview />} />
+                    </Routes>
+                )
+        }
+    }
+
     const { txt } = filterBy
     return (<div className="mail-page">
 
@@ -63,24 +115,17 @@ export function MailIndex() {
             onSetFilter={onSetFilter}
             filterBy={{ txt }} />
         <div className="mail-main">
-            <div className="more-Options">
+
+            <MailFolderList/>
+            {/* <div className="more-Options">
                 <h1 className="send fa-solid fa-pen"></h1>
                 <Link to='/mail'><h1 className="fa-solid fa-inbox"></h1></Link>
                 <h1 className="fa-solid fa-trash-can"></h1>
                 <h1 className="fa-regular fa-paper-plane"></h1>
-            </div>
+            </div> */}
 
             <div className="mail-list-container">
-                {location.pathname === "/mail" ?
-                    <MailList mails={mails}
-                        OnRemoveMail={OnRemoveMail}
-                        OnReadMail={OnReadMail}
-                        onSelectMail={onSelectMail}
-                        selectedMail={selectedMail} /> :
-                    <Routes>
-                        <Route path=":mailId" element={<MailPreview />} />
-                    </Routes>
-                }
+                {mails ? getMailList() : null}
             </div>
         </div>
     </div >

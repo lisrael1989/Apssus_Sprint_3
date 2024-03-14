@@ -11,6 +11,7 @@ export const mailService = {
     save,
     getEmptyMail,
     getDefaultFilter,
+    
     // getFilterFromParams
 }
 
@@ -79,6 +80,7 @@ function _createMails() {
         Mails.push(_createMail('rebecca', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Apr 25 2023")), null))
         Mails.push(_createMail('michael', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Mar 15 2023")), null))
         Mails.push(_createMail('sophia', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Feb 09 2023")), null))
+        Mails.push(_createMail('user@appsus.com', 'sophia', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Feb 09 2023")), null))
 
         utilService.saveToStorage(MAIL_KEY, Mails)
     }
