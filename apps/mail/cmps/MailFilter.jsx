@@ -23,7 +23,9 @@ export function MailFilter({ onSetFilter, filterBy }) {
 
 
     return <div className="header-mail">
-            
+        <img
+            src="assets\img\gmail.png" className="gmail-img-header"
+        ></img>
         <div className="search-input">
             <form onSubmit={onFilter}>
                 <input type="text"
@@ -35,7 +37,7 @@ export function MailFilter({ onSetFilter, filterBy }) {
             </form>
         </div>
         <nav>
-             <NavLink className="fa-solid fa-house" to="/"></NavLink>
+            <NavLink className="fa-solid fa-house" to="/"></NavLink>
             <NavLink className="fa-solid fa-address-card" to="/about"></NavLink>
             <NavLink className="fa-solid fa-envelope-open" to="/mail"></NavLink>
             <NavLink className="fa-solid fa-note-sticky" to="/note"></NavLink>

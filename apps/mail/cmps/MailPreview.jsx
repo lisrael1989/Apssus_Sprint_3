@@ -18,9 +18,11 @@ export function MailPreview() {
     return (
         <div className="mail-Msg">
             <h2>subject:{mail.subject}</h2>
-            <span>{mail.sentAt}</span>
+            <div className="human-details">
             <span className="fa-solid fa-user"></span>
-            <span>{mail.from}</span>
+            <span className="name-user">{mail.from}</span>
+            <span className="date">{mail.sentAt}</span>
+            </div>
             <p>{mail.body}</p>
         </div>
     )

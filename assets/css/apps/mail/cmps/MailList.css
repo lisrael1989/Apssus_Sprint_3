@@ -17,6 +17,8 @@
     width: 100%;
     bottom: 0;
     padding: 15px;
+    gap: 10px;
+    font-size: 20px;
  }
 
  .mail-list {
@@ -67,12 +69,13 @@
  .mail-main {
     display: flex;
     justify-content: center;
-    background-color: rgba(202, 223, 248, 0.524);
- }
+    background-color: rgba(204, 219, 235, 0.136)
+    }
 
  .mail-body {
     font-size: 18px;
     color: #00000089;
+    background-color: rgba(204, 219, 235, 0.136)
  }
 
  .more-Options {
@@ -83,6 +86,7 @@
     justify-content: start;
     align-items: center;
     gap: 20px;
+    background-color: rgba(204, 219, 235, 0.136)
  }
 
  .send {
@@ -119,4 +123,14 @@
     display: flex;
     justify-content: flex-start;
     gap: 10px;
+ }
+
+ .human-details{
+   display: flex;
+ }
+
+.name-user{
+   display: flex;
+   flex-grow: 1;
+
  }
