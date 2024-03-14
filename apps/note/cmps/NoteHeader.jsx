@@ -4,6 +4,10 @@ const { Link,NavLink } = ReactRouterDOM
 
 export function NoteHeader({ onSetFilter, filterBy }) {
   const [filterByToEdit, setFilterByToEdit] = useState(filterBy);
+  const [isNavVisible, setIsNavVisible] = useState(false);
+  const toggleNavBar = () => {
+    setIsNavVisible(!isNavVisible);
+  };
 
   useEffect(() => {
     onSetFilter(filterByToEdit);
@@ -22,16 +26,18 @@ export function NoteHeader({ onSetFilter, filterBy }) {
   }
 
 
+
+
     return <header className="note-header">
       
         <Link to="/note">
           <img
-            className="keep-img-header animate__animated animate__bounce"
+            className="keep-img-header"
             src="assets\img\keep.png"
+            title="go back to notes"
           ></img>
       </Link>
 
-     
       <form className="search-header" onSubmit={onFilter}>
         <label htmlFor="title"></label>
         <input
@@ -39,19 +45,34 @@ export function NoteHeader({ onSetFilter, filterBy }) {
           id="title"
           className="title"
           name="title"
+          title="search by txt or title"
           value= {filterByToEdit.title} 
           onChange={handleChange}
           placeholder="Search..."
         />
       </form>
-        <img className="keep-btn" src="assets\img\keep-header-btn.png" alt="" />
-      {/* <nav>
-             <NavLink className="fa-solid fa-house" to="/"></NavLink>
-            <NavLink className="fa-solid fa-address-card" to="/about"></NavLink>
-            <NavLink className="fa-solid fa-envelope-open" to="/mail"></NavLink>
-            <NavLink className="fa-solid fa-note-sticky" to="/note"></NavLink>
-        </nav> */}
+      <div className="nav-container">
+        <img className="keep-btn" 
+        src="assets\img\keep-header-btn.png" 
+        title="navigation to other pages"
+        alt=""
+        onClick={toggleNavBar}/>
 
+        {isNavVisible &&  (
+        <nav className="nav-links">
+            <NavLink className=" nav-icon fa-solid fa-house" to="/"></NavLink>
+            <NavLink className=" nav-icon fa-solid fa-address-card" to="/about"></NavLink>
+            <NavLink to="/mail"><img
+            src="assets\img\gmail.png" className="gmail-note-header"
+        ></img></NavLink>
+            <NavLink to="/note"> <img
+            className="keep-nev-btn"
+          src="assets\img\keep.png"></img>
+            </NavLink>
+        </nav>
+        )}
+        </div>
     </header>
 }
+
 
