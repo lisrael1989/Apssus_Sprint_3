@@ -8,7 +8,7 @@ export function Home() {
     <section className="home  ">
       <div>
         <h1 className="home-title">
-          <span>Welcome</span> to <span> Apssus</span> App
+          <span>Welcome</span> to <span> Apssus</span>
         </h1>
         <h2 className="sub-title-home">Let's start the journey...</h2>
       </div>
