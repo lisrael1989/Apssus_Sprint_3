@@ -53,7 +53,30 @@ export function NoteIndex() {
           showErrorMsg('Error duplicating note');
         });
       }
-     
+
+      function onUpdateNoteColor(noteId, color) {
+        console.log(`Updating note ${noteId} with color ${color}`); 
+    
+        const updatedNotes = notes.map((note) => {
+            if (note.id === noteId) {
+                console.log('Found note to update:', note); 
+                return { ...note, style: { ...note.style, backgroundColor: color } };
+            }
+            return note;
+        });
+    
+        console.log('Updated notes array:', updatedNotes); 
+    
+        setNotes(updatedNotes);
+    
+        const noteToUpdate = updatedNotes.find(note => note.id === noteId);
+        noteService.save(noteToUpdate).then(() => {
+            console.log('Note color updated successfully in service'); 
+            loadNotes(); 
+        }).catch(err => console.error('Failed to save note color change', err));
+    }
+    
+    
 
       function onSetFilter(fieldsToUpdate) {
         setFilterBy((prevFilter) => ({ ...prevFilter, ...fieldsToUpdate }));
@@ -77,7 +100,8 @@ export function NoteIndex() {
             notes={notes}
             onRemoveNote={onRemoveNote}
             onDuplicateNote={onDuplicateNote}
-        />
+            // onUpdateNoteColor={onUpdateNoteColor}
+            />
     
         <UserMsg msg={userMsg} />
         </section>
