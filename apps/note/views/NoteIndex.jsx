@@ -42,17 +42,18 @@ export function NoteIndex() {
           });
       }
 
-      function onDuplicateNote(noteToDuplicate){
+      function onDuplicateNote(noteToDuplicate) {
         const newNote = { ...noteToDuplicate, id: utilService.makeId(), createdAt: Date.now() };
-        delete newNote.id;
         noteService.save(newNote).then(savedNote => {
-          setNotes((prevNotes) => [...prevNotes, savedNote]);
-          showSuccessMsg('Note duplicated successfully');
+            setNotes((prevNotes) => [...prevNotes, savedNote]);
+            showSuccessMsg('Note duplicated successfully');
         }).catch(err => {
-          console.error('Error duplicating note', err);
-          showErrorMsg('Error duplicating note');
+            console.error('Error duplicating note', err);
+            showErrorMsg('Error duplicating note');
         });
-      }
+    }
+    
+
 
       function onUpdateNoteColor(noteId, color) {
         console.log(`Updating note ${noteId} with color ${color}`); 
@@ -100,7 +101,7 @@ export function NoteIndex() {
             notes={notes}
             onRemoveNote={onRemoveNote}
             onDuplicateNote={onDuplicateNote}
-            // onUpdateNoteColor={onUpdateNoteColor}
+            onUpdateNoteColor={onUpdateNoteColor}
             />
     
         <UserMsg msg={userMsg} />

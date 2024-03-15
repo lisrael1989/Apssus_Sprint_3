@@ -48,19 +48,19 @@ function remove(noteId) {
 }
 
 function save(note) {
-  console.log('Saving note:', note); // Log the note being saved
+  console.log('Saving note:', note); 
 
   if (note.id) {
       return storageService.put(NOTE_KEY, note)
-          .then(() => console.log(`Note ${note.id} updated successfully.`)) // Log success
-          .catch(err => console.error(`Error updating note ${note.id}:`, err)); // Log errors
+          .then(() => console.log(`Note ${note.id} updated successfully.`)) 
+          .catch(err => console.error(`Error updating note ${note.id}:`, err)); 
   } else {
       note.id = utilService.makeId();
       note.createdAt = Date.now();
       note.style = note.style || { backgroundColor: '#ffffff' };
       return storageService.post(NOTE_KEY, note)
-          .then(() => console.log(`Note ${note.id} created successfully.`)) // Log success
-          .catch(err => console.error(`Error creating note:`, err)); // Log errors
+          .then(() => console.log(`Note ${note.id} created successfully.`)) 
+          .catch(err => console.error(` Error creating note: ${note.id} `, err)); 
   }
 }
 
@@ -79,14 +79,14 @@ function getEmptyNote(type="") {
 function _createNotes() {
     let notes = utilService.loadFromStorage(NOTE_KEY);
     if (!notes || !notes.length){
-        const notes = [ //here is an array of some notes
+        notes = [ 
         {
         id: 'n101',
         createdAt: 1112222,
         type: 'NoteTxt',
         isPinned: true,
         style: {
-        backgroundColor: '#f00eea'
+        backgroundColor: '#aaddaa'
         },
         info: {
         txt: 'Fullstack Me Baby!'
@@ -125,7 +125,7 @@ function _createNotes() {
             backgroundColor: '#f0addd'
             },
             info: {
-            txt: 'HAPPY TO BE HERE 😎 i hope you too'
+            txt: 'HAPPY TO BE HERE 😎 '
             }
             },
             {
@@ -151,7 +151,19 @@ function _createNotes() {
                   style: {
                   backgroundColor: '#f0aaaa'
                   }
-                  }
+                  },
+                  {
+                    id: 'n107',
+                    createdAt: 1112222,
+                    type: 'NoteTxt',
+                    isPinned: true,
+                    style: {
+                    backgroundColor: '#aaddaa'
+                    },
+                    info: {
+                    txt: 'Why did the skeleton refuse to fight anyone at the Halloween party? Because he realized he didnt have the guts for it. Plus, every time he tried to throw a punch, he would just rattle himself!'
+                    }
+                    }
         ]
         utilService.saveToStorage(NOTE_KEY, notes);
 

@@ -25,11 +25,10 @@
 
   justify-content: center;
   margin-bottom: 20px;
-  background: #f0f0f0; 
-  border: 1px solid #ccc; 
+  border: 1px solid transparent; 
   border-radius: 8px; 
   padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 1px 1px 1px 2px rgba(192, 189, 189, 0.482); 
  background-color: rgb(165, 214, 243);
  break-inside: avoid;
 } 
@@ -78,13 +77,15 @@
 .pinned-btn,
 .send-email-btn,
 .duplicate-btn {
+  color: #202124;
+  font-size: 1em;
+  opacity: 0.71;
   border: none;
   padding: 8px 15px;
   border-radius: 4px;
   cursor: pointer; 
   font-weight: bold;
-  background-color: #f0ad4e;
-  color: black;
+background: transparent; 
   margin-top: 20px;
   margin-right:5px;
 }
