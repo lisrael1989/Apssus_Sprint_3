@@ -1,19 +1,14 @@
 .note-list {
-  /* display: grid; */
-
   columns: 200px 5;
     list-style-type: none;
-
   padding: 0;
   gap: 20px; 
-  /* margin-bottom: 50px; */
+  
   text-decoration: none;
-
- /* grid-auto-rows: min-content;  */
- /* grid-auto-flow: dense;  */
+  margin:0 40px;
+ 
  
 }
-
 
 
 .note-item {
@@ -66,9 +61,16 @@
 
 .note-actions {
   cursor: pointer;
-  margin-top: 10px; 
-  
+
 }
+
+.note-action button:hover{
+  background-color: bisque;
+  transition: 0.5s;
+  transform: scale(1.5);
+  }
+  
+ 
 
 
 .remove-btn,
@@ -81,20 +83,28 @@
   font-size: 1em;
   opacity: 0.71;
   border: none;
-  padding: 8px 15px;
+  padding: 10px 15px;
   border-radius: 4px;
   cursor: pointer; 
   font-weight: bold;
-background: transparent; 
+  background: transparent; 
   margin-top: 20px;
   margin-right:5px;
+  
 }
 
-.note-action button:hover{
-background-color: bisque;
-transition: 0.5s;
-transform: scale(1.5);
 
+
+
+
+
+.btn:hover{
+  border-radius: 50%;
+  padding: 10px 15px;
+  color: rgb(0, 0, 0);
+  background-color: rgba(128, 128, 128, 0.411);
+  transition: 0.8s;
+  
 }
 
 

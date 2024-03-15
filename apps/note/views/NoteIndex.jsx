@@ -9,6 +9,7 @@ import {
 import { NotePreview } from "./NotePreview.jsx";
 import { UserMsg } from "../cmps/UserMsg.jsx";
 import { NoteHeader } from "../cmps/NoteHeader.jsx";
+import { AddNotes } from "../cmps/AddNotes.jsx";
 
 
 export function NoteIndex() {
@@ -96,6 +97,9 @@ export function NoteIndex() {
         <NoteHeader
         onSetFilter={onSetFilter}
             filterBy={{ filterBy }}/>
+
+<AddNotes />
+
 
         <NotePreview
             notes={notes}

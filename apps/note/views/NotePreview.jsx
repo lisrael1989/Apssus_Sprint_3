@@ -1,23 +1,24 @@
 const {useState}=React
 import {ColorPicker} from "../cmps/ColorPicker.jsx";
+import {AddNotes} from "../cmps/AddNotes.jsx";
 
 export function NotePreview({ notes, onRemoveNote, onDuplicateNote, onUpdateNoteColor }) {
   const [visibleColorPicker, setVisibleColorPicker] = useState({});
  
-  const toggleColorPicker = (id) => {
-    setVisibleColorPicker(prev => ({
-      ...prev,
-      [id]: !prev[id], 
-    }));
-  };
-
   // const toggleColorPicker = (id) => {
-  //   setVisibleColorPicker(prev => {
-  //     const newState = { ...prev };
-  //     newState[id] = !newState[id];
-  //     return newState;
-  //   });
+  //   setVisibleColorPicker(prev => ({
+  //     ...prev,
+  //     [id]: !prev[id], 
+  //   }));
   // };
+
+  const toggleColorPicker = (id) => {
+    setVisibleColorPicker(prev => {
+      const newState = { ...prev };
+      newState[id] = !newState[id];
+      return newState;
+    });
+  };
 
   const safeNotes = notes || [];
 
@@ -36,11 +37,11 @@ return (
             </div>
 
             <div className="note-actions">
-              <button className="edit-btn fa-solid fa-pen-to-square"></button>
-              <button className="remove-btn fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></button>
-              <button className="pinned-btn fa-solid fa-thumbtack"></button>
-              <button className="duplicate-btn fa-solid fa-copy" onClick={() => onDuplicateNote(note)}></button>
-              <button className="color-btn fa-solid fa-palette" onClick={() => toggleColorPicker(note.id)}></button>
+              <button className="btn edit-btn fa-solid fa-pen-to-square"></button>
+              <button className="btn remove-btn fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></button>
+              <button className="btn pinned-btn fa-solid fa-thumbtack"></button>
+              <button className="btn duplicate-btn fa-solid fa-copy" onClick={() => onDuplicateNote(note)}></button>
+              <button className="btn color-btn fa-solid fa-palette" onClick={() => toggleColorPicker(note.id)}></button>
               {visibleColorPicker[note.id] && (
                 <ColorPicker
                   currentColor={backgroundColor}
