@@ -32,10 +32,10 @@ function query(filterBy = getDefaultFilter(), sortBy = getDefaultSort()) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 mails = mails.filter(mail => regex.test(mail.from))
             }
-            if (filterBy.isRead) {
+            if (filterBy.isRead === true) {
                 mails = mails.filter(mail => mail.isRead)
             }
-            if (!filterBy.isRead) {
+            if (!filterBy.isRead === false) {
                 mails = mails.filter(mail => !mail.isRead)
             }
 
@@ -56,7 +56,7 @@ function save(mail) {
     if (mail.id) {
         return storageService.put(MAIL_KEY, mail)
     } else {
-        mail = _createMail(mail.email,mail.from, mail.to, mail.subject, mail.body, mail.isRead, mail.sentAt)
+        mail = _createMail(mail.email, mail.from, mail.to, mail.subject, mail.body, mail.isRead, mail.sentAt)
         return storageService.post(MAIL_KEY, mail)
     }
 }
