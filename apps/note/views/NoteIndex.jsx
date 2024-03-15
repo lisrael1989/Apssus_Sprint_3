@@ -6,9 +6,11 @@ import {
     showErrorMsg,
     showSuccessMsg,
   } from "../../../services/event-bus.service.js"
+
 import { NotePreview } from "./NotePreview.jsx";
 import { UserMsg } from "../cmps/UserMsg.jsx";
 import { NoteHeader } from "../cmps/NoteHeader.jsx";
+import { AddNotes } from "../cmps/AddNotes.jsx";
 
 
 export function NoteIndex() {
@@ -38,12 +40,12 @@ export function NoteIndex() {
           })
           .catch((err) => {
             console.log("Had issues removing note", err);
-            showErrorMsg(`Book removed successfully (${noteId})`);
+            showErrorMsg(`note removed successfully (${noteId})`);
           });
       }
 
       function onDuplicateNote(noteToDuplicate) {
-        const newNote = { ...noteToDuplicate, id: utilService.makeId(), createdAt: Date.now() };
+        const newNote = { ...noteToDuplicate, id:"", createdAt: Date.now() };
         noteService.save(newNote).then(savedNote => {
             setNotes((prevNotes) => [...prevNotes, savedNote]);
             showSuccessMsg('Note duplicated successfully');
@@ -53,8 +55,6 @@ export function NoteIndex() {
         });
     }
     
-
-
       function onUpdateNoteColor(noteId, color) {
         console.log(`Updating note ${noteId} with color ${color}`); 
     
@@ -65,9 +65,7 @@ export function NoteIndex() {
             }
             return note;
         });
-    
         console.log('Updated notes array:', updatedNotes); 
-    
         setNotes(updatedNotes);
     
         const noteToUpdate = updatedNotes.find(note => note.id === noteId);
@@ -77,7 +75,15 @@ export function NoteIndex() {
         }).catch(err => console.error('Failed to save note color change', err));
     }
     
-    
+    function onAddNote(newNote) {
+      noteService.save(newNote).then(savedNote => {
+          setNotes((prevNotes) => [...prevNotes, savedNote]);
+          showSuccessMsg('Note added successfully');
+      }).catch(err => {
+          console.error('Error adding note', err);
+          showErrorMsg('Error adding note');
+      });
+    }
 
       function onSetFilter(fieldsToUpdate) {
         setFilterBy((prevFilter) => ({ ...prevFilter, ...fieldsToUpdate }));
@@ -94,8 +100,14 @@ export function NoteIndex() {
 
     <section className="note-index">
         <NoteHeader
-        onSetFilter={onSetFilter}
+            onSetFilter={onSetFilter}
             filterBy={{ filterBy }}/>
+
+        <AddNotes 
+        onAddNote={onAddNote}  
+        />
+
+
 
         <NotePreview
             notes={notes}

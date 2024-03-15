@@ -20,7 +20,7 @@
   margin-right: 50px;
   cursor: pointer;
   max-height: 100px;
-  max-width: 60px;
+  max-width: 50px;
  
 }
 
@@ -30,7 +30,8 @@
 }
 
 .title{
-  font-size: 1.5em;
+  font-size: 1.2em;
+  padding: 10px;
   border-radius: 5px;
   height: 50px;
   width: 100%;

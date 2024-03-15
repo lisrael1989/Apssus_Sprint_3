@@ -10,7 +10,7 @@
 @import './basics/layout.css';
 
 /* Views */
-@import 'assets/css/views/Home.css';
+@import './views/Home.css';
 @import './views/about.css';
 
 @import './apps/note/views/NoteIndex.css';
@@ -22,6 +22,7 @@
 @import './cmps/UserMsg.css';
 @import './cmps/AppHeader.css';
 @import './cmps/NoteHeader.css';
+@import './cmps/AddNotes.css';
 
 /* Note */
 @import "./cmps/note-preview.css";
