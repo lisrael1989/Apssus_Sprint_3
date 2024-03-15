@@ -17,6 +17,11 @@ export function MailCompose({ onClose, onSend }) {
     return (
         <div className="mail-compose-container">
             <div className="mail-compose">
+                <div className="header-compose">
+                    <h1>New mail</h1>
+                    <button type="button" onClick={onClose}>x</button>
+
+                </div>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
@@ -26,6 +31,7 @@ export function MailCompose({ onClose, onSend }) {
                         onChange={handleChange}
                     />
                     <input
+                        className="desc-msg"
                         type="text"
                         name="subject"
                         placeholder="Subject"
@@ -34,13 +40,12 @@ export function MailCompose({ onClose, onSend }) {
                     />
                     <textarea
                         name="body"
-                        placeholder="Compose email"
+                        placeholder=''
                         value={mail.body}
                         onChange={handleChange}
                     />
                     <div className="actions">
                         <button type="submit">Send</button>
-                        <button type="button" onClick={onClose}>Close</button>
                     </div>
                 </form>
             </div>

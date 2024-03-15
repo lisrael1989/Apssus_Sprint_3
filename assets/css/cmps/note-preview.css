@@ -89,7 +89,7 @@
   margin-right:5px;
 }
 
-.note-action ,button:hover{
+.note-action button:hover{
 background-color: bisque;
 transition: 0.5s;
 transform: scale(1.5);

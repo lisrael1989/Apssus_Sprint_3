@@ -2,6 +2,7 @@ const { useParams } = ReactRouterDOM
 const { useEffect, useState } = React
 
 import { mailService } from "../services/mail.service.js"
+import { LongTxt } from './LongTxt.jsx'
 
 
 export function MailPreview() {
@@ -20,10 +21,11 @@ export function MailPreview() {
             <h2>subject:{mail.subject}</h2>
             <div className="human-details">
             <span className="fa-solid fa-user"></span>
-            <span className="name-user">{mail.from}</span>
+            <span className="name-user">{mail.from[0].toUpperCase() + mail.from.slice(1)}</span>
             <span className="date">{mail.sentAt}</span>
             </div>
-            <p>{mail.body}</p>
+            {/* <p>{mail.body}</p> */}
+            <LongTxt txt={mail.body} length={2000} />
         </div>
     )
 }

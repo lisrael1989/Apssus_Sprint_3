@@ -27,7 +27,7 @@ export function MailList({ mails, OnRemoveMail, OnReadMail, onSelectMail, select
                         <div className="line-mail">
                             <Link to={`/mail/${mail.id}`} style={{ width: '100%' }} >
 
-                                <span className="name-mail">{mail.from}</span>
+                                <span className="name-mail">{mail.from[0].toUpperCase() + mail.from.slice(1)}</span>
 
                                 {/* <span>{mail.}</span> */}
                                 <span className="subject-mail">{mail.subject}<span className="mail-body">{letters(mail.body)}</span></span>
@@ -39,7 +39,7 @@ export function MailList({ mails, OnRemoveMail, OnReadMail, onSelectMail, select
                                         <span className="fa-solid fa-trash" onClick={() => { OnRemoveMail(mail.id) }}></span>
                                         <span className={mail.isRead ? "fa-regular fa-envelope-open" : "fa-regular fa-envelope"} onClick={() => { OnReadMail(mail.id); }}></span>
                                     </React.Fragment>
-                                ) : (<span>{mail.sentAt}</span>)}
+                                ) : (<span className="time-mail">{mail.sentAt}</span>)}
                             </div> </div></div></div>)
 
                 )}

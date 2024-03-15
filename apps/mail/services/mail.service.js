@@ -4,6 +4,12 @@ import { storageService } from '../../../services/async-storage.service.js'
 const MAIL_KEY = 'MailDB'
 _createMails()
 
+export const loggedinUser = {//have a basic user:
+
+    email: 'user@appsus.com',
+    fullname: 'Mahatma Appsus'
+}
+
 export const mailService = {
     query,
     get,
@@ -11,7 +17,8 @@ export const mailService = {
     save,
     getEmptyMail,
     getDefaultFilter,
-    
+
+
     // getFilterFromParams
 }
 
@@ -53,34 +60,34 @@ function _createMails() {
     let Mails = utilService.loadFromStorage(MAIL_KEY)
     if (!Mails || !Mails.length) {
         Mails = []
-        Mails.push(_createMail('jane', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Sep 14 2023")), null))
-        Mails.push(_createMail('alex', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Oct 12 2023")), null))
-        Mails.push(_createMail('samantha', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Aug 05 2023")), null))
-        Mails.push(_createMail('david', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Jul 22 2023")), null))
-        Mails.push(_createMail('emily', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Jun 19 2023")), null))
-        Mails.push(_createMail('chris', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("May 30 2023")), null))
-        Mails.push(_createMail('rebecca', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Apr 25 2023")), null))
-        Mails.push(_createMail('michael', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Mar 15 2023")), null))
-        Mails.push(_createMail('sophia', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Feb 09 2023")), null))
-        Mails.push(_createMail('jane', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Sep 14 2023")), null))
-        Mails.push(_createMail('alex', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Oct 12 2023")), null))
-        Mails.push(_createMail('samantha', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Aug 05 2023")), null))
-        Mails.push(_createMail('david', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Jul 22 2023")), null))
-        Mails.push(_createMail('emily', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Jun 19 2023")), null))
-        Mails.push(_createMail('chris', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("May 30 2023")), null))
-        Mails.push(_createMail('rebecca', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Apr 25 2023")), null))
-        Mails.push(_createMail('michael', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Mar 15 2023")), null))
-        Mails.push(_createMail('sophia', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Feb 09 2023")), null))
-        Mails.push(_createMail('jane', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Sep 14 2023")), null))
-        Mails.push(_createMail('alex', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Oct 12 2023")), null))
-        Mails.push(_createMail('samantha', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Aug 05 2023")), null))
-        Mails.push(_createMail('david', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Jul 22 2023")), null))
-        Mails.push(_createMail('emily', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Jun 19 2023")), null))
-        Mails.push(_createMail('chris', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("May 30 2023")), null))
-        Mails.push(_createMail('rebecca', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Apr 25 2023")), null))
-        Mails.push(_createMail('michael', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getMonthName(new Date("Mar 15 2023")), null))
-        Mails.push(_createMail('sophia', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Feb 09 2023")), null))
-        Mails.push(_createMail('user@appsus.com', 'sophia', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getMonthName(new Date("Feb 09 2023")), null))
+
+        Mails.push(_createMail('alex', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Oct 12 2023")), null))
+        Mails.push(_createMail('samantha', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Aug 05 2023")), null))
+        Mails.push(_createMail('david', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getRelativeTime(new Date("Jul 22 2023")), null))
+        Mails.push(_createMail('emily', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Jun 19 2023")), null))
+        Mails.push(_createMail('chris', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("May 30 2023")), null))
+        Mails.push(_createMail('rebecca', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Apr 25 2023")), null))
+        Mails.push(_createMail('michael', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Mar 15 2023")), null))
+        Mails.push(_createMail('sophia', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getRelativeTime(new Date("Feb 09 2023")), null))
+        Mails.push(_createMail('jane', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getRelativeTime(new Date("Sep 14 2023")), null))
+        Mails.push(_createMail('alex', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Oct 12 2023")), null))
+        Mails.push(_createMail('samantha', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Aug 05 2023")), null))
+        Mails.push(_createMail('david', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getRelativeTime(new Date("Jul 22 2023")), null))
+        Mails.push(_createMail('emily', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Jun 19 2023")), null))
+        Mails.push(_createMail('chris', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("May 30 2023")), null))
+        Mails.push(_createMail('rebecca', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Apr 25 2023")), null))
+        Mails.push(_createMail('michael', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Mar 15 2023")), null))
+        Mails.push(_createMail('sophia', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getRelativeTime(new Date("Feb 09 2023")), null))
+        Mails.push(_createMail('jane', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getRelativeTime(new Date("Sep 14 2023")), null))
+        Mails.push(_createMail('alex', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Oct 12 2023")), null))
+        Mails.push(_createMail('samantha', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Aug 05 2023")), null))
+        Mails.push(_createMail('david', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getRelativeTime(new Date("Jul 22 2023")), null))
+        Mails.push(_createMail('emily', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Jun 19 2023")), null))
+        Mails.push(_createMail('chris', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("May 30 2023")), null))
+        Mails.push(_createMail('rebecca', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Apr 25 2023")), null))
+        Mails.push(_createMail('michael', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), false, utilService.getRelativeTime(new Date("Mar 15 2023")), null))
+        Mails.push(_createMail('sophia', 'user@appsus.com', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getRelativeTime(new Date("Feb 09 2023")), null))
+        Mails.push(_createMail('user@appsus.com', 'yuval', utilService.makeLorem(2), utilService.makeLorem(600), true, utilService.getRelativeTime(new Date("Feb 09 2023")), null))
 
         utilService.saveToStorage(MAIL_KEY, Mails)
     }
@@ -113,12 +120,6 @@ const email = {//Model - start with a basic model of emails:
     removedAt: null,
     from: 'momo@momo.com',
     to: 'user@appsus.com'
-}
-
-const loggedinUser = {//have a basic user:
-
-    email: 'user@appsus.com',
-    fullname: 'Mahatma Appsus'
 }
 
 

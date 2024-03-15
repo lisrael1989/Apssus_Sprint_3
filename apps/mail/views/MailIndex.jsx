@@ -7,6 +7,7 @@ import { MailList } from "../cmps/MailList.jsx";
 import { MailFilter } from "../cmps/MailFilter.jsx";
 import { MailCompose } from "../cmps/MailCompose.jsx";
 import { mailService } from "../services/mail.service.js"
+import { loggedinUser } from "../services/mail.service.js"
 import { MailPreview } from '../cmps/MailPreview.jsx'
 import { MailFolderList } from '../cmps/MailFolderList.jsx'
 
@@ -17,7 +18,8 @@ export function MailIndex() {
     const [selectedMail, setSelectedMail] = useState(null)
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [isCompose, setCompose] = useState(false)
-    const myUser = "user@appsus.com"
+    const myUser = loggedinUser
+    // console.log(myUser)
 
 
     function opemCompose() {
@@ -29,7 +31,7 @@ export function MailIndex() {
     }
 
     function sendMail(newMail) {
-        newMail.from = myUser
+        newMail.from = myUser.email
         mailService.save(newMail)
             .then((savedmail) => {
                 setMails(prevMails => prevMails.map(mail => mail.id === savedmail.id ? savedmail : mail))
@@ -93,12 +95,11 @@ export function MailIndex() {
 
     function getMailList() {
         const route = location.pathname
-        const myUser = "user@appsus.com"
 
         switch (route) {
             case '/mail':
                 return (
-                    <MailList mails={mails.filter(m => !m.isRemove && m.to === myUser)}
+                    <MailList mails={mails.filter(m => !m.isRemove && m.to === myUser.email)}
                         OnRemoveMail={OnRemoveMail}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
@@ -114,7 +115,7 @@ export function MailIndex() {
                 )
             case '/mail/send':
                 return (
-                    <MailList mails={mails.filter(m => !m.isRemove && m.from === myUser)}
+                    <MailList mails={mails.filter(m => !m.isRemove && m.from === myUser.email)}
                         OnRemoveMail={OnRemoveMail}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
@@ -122,7 +123,7 @@ export function MailIndex() {
                 )
             case '/mail/write':
                 return (
-                    <MailList mails={mails.filter(m => !m.isRemove && m.to === myUser)}
+                    <MailList mails={mails.filter(m => !m.isRemove && m.to === myUser.email)}
                         OnRemoveMail={OnRemoveMail}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
