@@ -1,7 +1,7 @@
 .note-list {
   /* display: grid; */
 
-  columns: 200px 4;
+  columns: 200px 5;
     list-style-type: none;
 
   padding: 0;
