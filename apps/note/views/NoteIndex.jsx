@@ -14,7 +14,7 @@ import { AddNotes } from "../cmps/AddNotes.jsx";
 
 
     export function NoteIndex() {
-    const [notes, setNotes] = useState(null);
+    const [notes, setNotes] = useState([]);
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter());
     const [userMsg, setUserMsg] = useState("");
 
@@ -45,16 +45,20 @@ import { AddNotes } from "../cmps/AddNotes.jsx";
       }
 
       function onDuplicateNote(noteToDuplicate) {
-        const newNote = { ...noteToDuplicate, id:"", createdAt: Date.now() };
+        const newNote = { ...noteToDuplicate, id: "", createdAt: Date.now() };
+        
         noteService.save(newNote).then(savedNote => {
-            setNotes((prevNotes) => [...prevNotes, savedNote]);
-            showSuccessMsg('Note duplicated successfully');
+          setNotes(prevNotes => [...prevNotes, savedNote]);
+          showSuccessMsg('Note duplicated successfully');
         }).catch(err => {
-            console.error('Error duplicating note', err);
-            showErrorMsg('Error duplicating note');
+          console.error('Error duplicating note', err);
+          showErrorMsg('Error duplicating note');
         });
-    }
+      }
+      
     
+
+
       function onUpdateNoteColor(noteId, color) {
         console.log(`Updating note ${noteId} with color ${color}`); 
     

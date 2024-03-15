@@ -1,6 +1,6 @@
 
-export function TextNote(note) {
-  <p>{note.info.txt}</p>;
+
+
+export function TextNote({ note }) {
+  return <p>{note.info.txt}</p>;
 }
-
-

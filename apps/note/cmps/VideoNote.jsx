@@ -1,4 +1,4 @@
-export function VideoNote(note) {
+export function VideoNote({note}) {
 
   const extractYoutubeId = (url) => {
     const regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;

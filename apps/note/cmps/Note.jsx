@@ -1,13 +1,12 @@
 
-// const { useState, useEffect } = React;
-import{TextNote} from "./TextNote.jsx"
-import{ImageNote} from "./ImageNote.jsx"
-import{VideoNote} from "./VideoNote.jsx"
-import{TodoNote} from "./TodoNote.jsx"
+import {TextNote} from "./TextNote.jsx"
+import {ImageNote} from "./ImageNote.jsx"
+import {VideoNote} from "./VideoNote.jsx"
+import {TodoNote} from "./TodoNote.jsx"
 
-export function Note(note) {
+export function Note({note}) {
   
-  const renderNoteType = (note) => {
+  const renderNoteType = () => {
     switch (note.type) {
       case 'NoteTxt':
         return <TextNote note={note} />;
@@ -18,13 +17,12 @@ export function Note(note) {
       case 'NoteTodos':
         return <TodoNote note={note} />;
       default:
-         console.log(note.type);
         return <p>Unknown note type</p>;
        
     }
 
   };
 
-  return <div>{renderNoteType(note)}</div>;
+  return <div>{renderNoteType()}</div>;
 
 }

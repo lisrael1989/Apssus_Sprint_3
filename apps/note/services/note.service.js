@@ -36,6 +36,7 @@ function getDefaultFilter() {
     return {
       title: "",
       txt: "",
+      type:""
     };
   }
 
@@ -48,19 +49,14 @@ function remove(noteId) {
 }
 
 function save(note) {
-  console.log('Saving note:', note); 
-
+  if (!note.style) {
+    note.style = { backgroundColor: '#ffffff' }; }
   if (note.id) {
-      return storageService.put(NOTE_KEY, note)
-          .then(() => console.log(`Note ${note.id} updated successfully.`)) 
-          .catch(err => console.error(`Error updating note ${note.id}:`, err)); 
+    return storageService.put(NOTE_KEY, note);
   } else {
-      note.id = utilService.makeId();
-      note.createdAt = Date.now();
-      note.style = note.style || { backgroundColor: '#ffffff' };
-      return storageService.post(NOTE_KEY, note)
-          .then(() => console.log(`Note ${note.id} created successfully.`)) 
-          .catch(err => console.error(` Error creating note: ${note.id} `, err)); 
+    note.id = utilService.makeId();
+    note.createdAt = Date.now();
+    return storageService.post(NOTE_KEY, note);
   }
 }
 
@@ -70,8 +66,10 @@ function getEmptyNote(type="") {
       id:"",
       type,
       info: {
+        title:'',
         txt: '', 
       },
+      style: { backgroundColor: '#ffffff' } 
     };
   }
 

@@ -7,32 +7,19 @@ export function NotePreview({ notes, onRemoveNote, onDuplicateNote, onUpdateNote
   const [visibleColorPicker, setVisibleColorPicker] = useState({});
  
 
-
-  const toggleColorPicker = (id) => {
-    setVisibleColorPicker(prev => {
-      const newState = { ...prev };
-      newState[id] = !newState[id];
-      return newState;
-    });
+  const toggleColorPicker = (noteId) => {
+    setVisibleColorPicker(prev => ({ ...prev, [noteId]: !prev[noteId] }));
   };
 
-  const safeNotes = notes || [];
 
 
-return (
-  <ul className="note-list">
-    {safeNotes.map(note => {
-      if (note && typeof note.id !== 'undefined') {
+  return (
+    <ul className="note-list">
+      {notes.map(note => {
         const backgroundColor = note.style && note.style.backgroundColor ? note.style.backgroundColor : '#ffffff';
         return (
-          <li key={note.id} className="note-item" style={{ backgroundColor: backgroundColor }}>
-             <Note note={note} />
-            <div className="note-content">
-              {note.type === 'NoteTxt' && <p className="type-txt">{note.info.txt}</p>}
-              <h3 className="note-title">{note.info.title}</h3>
-              {note.type === 'NoteImg' && <img src={note.info.url} alt={note.info.title} className="type-url" />}
-            </div>
-
+          <li key={note.id} className="note-item" style={{ backgroundColor }}>
+            <Note note={note} />
             <div className="note-actions">
               <button className="btn edit-btn fa-solid fa-pen-to-square"></button>
               <button className="btn remove-btn fa-solid fa-trash" onClick={() => onRemoveNote(note.id)}></button>
@@ -48,11 +35,7 @@ return (
             </div>
           </li>
         );
-      } else {
-        
-        return null;
-      }
-    })}
-  </ul>
-);
+      })}
+    </ul>
+  );
 }

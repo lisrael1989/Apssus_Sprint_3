@@ -1,7 +1,7 @@
 const {useState}=React
 
 export function AddNotes( {onAddNote}) {
-  const [inputType, setInputType] = useState('text'); 
+  const [inputType, setInputType] = useState('txt'); 
   const [inputValue, setInputValue] = useState('');
 
   const placeholders = {
@@ -25,11 +25,12 @@ export function AddNotes( {onAddNote}) {
     if (!inputValue.trim()) return;
 
     const newNoteData = {
-      type: `Note${inputType.charAt(0).toUpperCase() + inputType.slice(1)}`, 
-      info: inputType === 'todo' ? { todos: inputValue.split(',').map(txt => ({ txt: txt.trim(), doneAt: null })) } : { url: inputValue },
-  
+      type: `Note${inputType.charAt(0).toUpperCase() + inputType.slice(1)}`,
+      info: inputType === 'todo'
+        ? { todos: inputValue.split(',').map(txt => ({ txt: txt.trim(), doneAt: null })) }
+        : { url: inputValue },
     };
-    console.log({newNoteData});
+    
     onAddNote(newNoteData);
     setInputValue(''); 
   };
