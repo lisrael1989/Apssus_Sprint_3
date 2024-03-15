@@ -25,9 +25,6 @@ export function NoteHeader({ onSetFilter, filterBy }) {
     console.log(filterByToEdit);
   }
 
-
-
-
     return <header className="note-header">
       
         <Link to="/note">
