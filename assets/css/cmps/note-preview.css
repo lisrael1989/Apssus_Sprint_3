@@ -10,7 +10,6 @@
  
 }
 
-
 .note-item {
   list-style-type: none;
   position: relative;
@@ -27,8 +26,6 @@
  background-color: rgb(165, 214, 243);
  break-inside: avoid;
 } 
-
-
 
 .note-content {
   margin-bottom: 10px;
@@ -70,9 +67,6 @@
   transform: scale(1.5);
   }
   
- 
-
-
 .remove-btn,
 .edit-btn,
 .color-btn, 
@@ -93,11 +87,6 @@
   
 }
 
-
-
-
-
-
 .btn:hover{
   border-radius: 50%;
   padding: 10px 15px;
@@ -106,7 +95,6 @@
   transition: 0.8s;
   
 }
-
 
 .note-item .close-btn {
   position: absolute;

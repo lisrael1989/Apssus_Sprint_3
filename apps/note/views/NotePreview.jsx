@@ -1,16 +1,12 @@
 const {useState}=React
 import {ColorPicker} from "../cmps/ColorPicker.jsx";
-import {AddNotes} from "../cmps/AddNotes.jsx";
+import {Note} from "../cmps/Note.jsx";
+
 
 export function NotePreview({ notes, onRemoveNote, onDuplicateNote, onUpdateNoteColor }) {
   const [visibleColorPicker, setVisibleColorPicker] = useState({});
  
-  // const toggleColorPicker = (id) => {
-  //   setVisibleColorPicker(prev => ({
-  //     ...prev,
-  //     [id]: !prev[id], 
-  //   }));
-  // };
+
 
   const toggleColorPicker = (id) => {
     setVisibleColorPicker(prev => {
@@ -30,6 +26,7 @@ return (
         const backgroundColor = note.style && note.style.backgroundColor ? note.style.backgroundColor : '#ffffff';
         return (
           <li key={note.id} className="note-item" style={{ backgroundColor: backgroundColor }}>
+             <Note note={note} />
             <div className="note-content">
               {note.type === 'NoteTxt' && <p className="type-txt">{note.info.txt}</p>}
               <h3 className="note-title">{note.info.title}</h3>
