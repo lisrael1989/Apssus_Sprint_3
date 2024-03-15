@@ -10,6 +10,8 @@ import { mailService } from "../services/mail.service.js"
 import { loggedinUser } from "../services/mail.service.js"
 import { MailPreview } from '../cmps/MailPreview.jsx'
 import { MailFolderList } from '../cmps/MailFolderList.jsx'
+import { utilService } from '../../../services/util.service.js'
+
 
 export function MailIndex() {
 
@@ -17,9 +19,10 @@ export function MailIndex() {
     const location = useLocation()
     const [selectedMail, setSelectedMail] = useState(null)
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
+    const [sortBy, setSortBy] = useState(mailService.getDefaultSort())
     const [isCompose, setCompose] = useState(false)
     const myUser = loggedinUser
-    // console.log(myUser)
+    console.log(myUser)
 
 
     function opemCompose() {
@@ -31,25 +34,34 @@ export function MailIndex() {
     }
 
     function sendMail(newMail) {
-        newMail.from = myUser.email
+        newMail.email = myUser.email
+        newMail.from = 'Me'
+        newMail.sentAt = new Date()
+        console.log(newMail)
+
         mailService.save(newMail)
             .then((savedmail) => {
                 setMails(prevMails => prevMails.map(mail => mail.id === savedmail.id ? savedmail : mail))
 
             })
+
     }
 
 
     useEffect(() => {
         loadMails()
-    }, [filterBy])
+    }, [filterBy, sortBy])
+
+
+
+
 
     function onSetFilter(fieldsToUpdate) {
         setFilterBy(prevFilter => ({ ...prevFilter, ...fieldsToUpdate }))
     }
 
     function loadMails() {
-        mailService.query(filterBy)
+        mailService.query(filterBy, sortBy)
             .then((mails) => {
                 setMails(mails)
             })
@@ -60,8 +72,8 @@ export function MailIndex() {
         mailService.get(mailId).then((mail) => {
             mail.isRead = !mail.isRead;
             const updatedMails = mails.map(m => m.id === mailId ? { ...m, isRead: mail.isRead } : m)
-            setMails(updatedMails)
             mailService.save(mail)
+            setMails(updatedMails)
         })
     }
 
@@ -79,17 +91,17 @@ export function MailIndex() {
         mailService.get(mailId).then((mail) => {
             mail.isRemove = Date.now()
             const updatedMails = mails.map(m => m.id === mailId ? { ...m, isRemove: mail.isRemove } : m)
-            setMails(updatedMails)
             mailService.save(mail)
+            setMails(updatedMails)
         })
     }
 
     function OnDeletePermanent(mailId) {
         mailService.get(mailId).then((mail) => {
-            mail.isRemove = Date.now()
-            const updatedMails = mails.map(m => m.id !== mailId)
+            // mail.isRemove = Date.now()
+            const updatedMails = mails.map(m => m.id !== mail.id)
+            mailService.remove(mail.id)
             setMails(updatedMails)
-            mailService.remove(mailId)
         })
     }
 
@@ -103,7 +115,8 @@ export function MailIndex() {
                         OnRemoveMail={OnRemoveMail}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
-                        selectedMail={selectedMail} />
+                        selectedMail={selectedMail}
+                      />
                 )
             case '/mail/trash':
                 return (
@@ -111,15 +124,17 @@ export function MailIndex() {
                         OnRemoveMail={OnDeletePermanent}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
-                        selectedMail={selectedMail} />
+                        selectedMail={selectedMail}
+                         />
                 )
             case '/mail/send':
                 return (
-                    <MailList mails={mails.filter(m => !m.isRemove && m.from === myUser.email)}
+                    <MailList mails={mails.filter(m => !m.isRemove && m.from === 'Me')}
                         OnRemoveMail={OnRemoveMail}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
-                        selectedMail={selectedMail} />
+                        selectedMail={selectedMail}
+                        />
                 )
             case '/mail/write':
                 return (
@@ -127,7 +142,8 @@ export function MailIndex() {
                         OnRemoveMail={OnRemoveMail}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
-                        selectedMail={selectedMail} />
+                        selectedMail={selectedMail}
+                         />
                 )
             default:
                 return (
@@ -138,12 +154,14 @@ export function MailIndex() {
         }
     }
 
-    const { txt } = filterBy
+    const { txt, isRead } = filterBy
     return (<div className="mail-page">
 
         <MailFilter
             onSetFilter={onSetFilter}
-            filterBy={{ txt }} />
+            filterBy={{ txt, isRead }}
+            sortBy={sortBy}
+            setSortBy={setSortBy} />
         <div className="mail-main">
 
             <MailFolderList

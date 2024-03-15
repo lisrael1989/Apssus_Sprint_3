@@ -3,6 +3,7 @@ const { useEffect, useState } = React
 
 import { mailService } from "../services/mail.service.js"
 import { LongTxt } from './LongTxt.jsx'
+import { utilService } from '../../../services/util.service.js'
 
 
 export function MailPreview() {
@@ -21,8 +22,9 @@ export function MailPreview() {
             <h2>subject:{mail.subject}</h2>
             <div className="human-details">
             <span className="fa-solid fa-user"></span>
-            <span className="name-user">{mail.from[0].toUpperCase() + mail.from.slice(1)}</span>
-            <span className="date">{mail.sentAt}</span>
+            <span className="name-user">{mail.from[0].toUpperCase() + mail.from.slice(1)} - {mail.email} </span>
+            <span className="date">{utilService.getRelativeTime(mail.sentAt)}</span>
+            {/* utilService.getRelativeTime */}
             </div>
             {/* <p>{mail.body}</p> */}
             <LongTxt txt={mail.body} length={2000} />

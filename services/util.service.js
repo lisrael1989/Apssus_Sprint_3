@@ -93,6 +93,7 @@ function animateCSS(el, animation = 'bounce') {
 
 function getRelativeTime(timestamp) {
     const now = new Date();
+    const date = new Date(timestamp)
     const diff = now - timestamp;
     const oneHour = 60 * 60 * 1000;
     const oneDay = 24 * oneHour;
@@ -105,12 +106,12 @@ function getRelativeTime(timestamp) {
     } else if (diff < oneWeek) {
         // Less than a week ago
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const dayIndex = timestamp.getDay();
+        const dayIndex = date.getDay();
         return days[dayIndex];
     } else {
         // Older than a week
-        const year = timestamp.getFullYear();
-        const month = getMonthName(timestamp)
+        const year = date.getFullYear();
+        const month = getMonthName(date)
         // const day = timestamp.getDate().toString().padStart(2, '0');
         return `${month} ${year}`;
     }
