@@ -13,14 +13,14 @@ import { NoteHeader } from "../cmps/NoteHeader.jsx";
 import { AddNotes } from "../cmps/AddNotes.jsx";
 
 
-export function NoteIndex() {
+    export function NoteIndex() {
     const [notes, setNotes] = useState(null);
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter());
     const [userMsg, setUserMsg] = useState("");
 
     useEffect(() => {
         loadNotes()
-    }, [ [filterBy]])
+    }, [filterBy])
 
 
     function loadNotes() {
@@ -88,6 +88,7 @@ export function NoteIndex() {
       function onSetFilter(fieldsToUpdate) {
         setFilterBy((prevFilter) => ({ ...prevFilter, ...fieldsToUpdate }));
       }
+
 
       function flashMsg(txt) {
         setUserMsg(txt);
