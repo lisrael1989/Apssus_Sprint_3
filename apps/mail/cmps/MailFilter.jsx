@@ -46,7 +46,13 @@ export function MailFilter({ onSetFilter, filterBy, isRead, setSortBy, sortBy })
 
     return (
         <div className="header-mail">
-            <Link to="/mail"><img src="assets/img/gmail.png" className="gmail-img-header" alt="Gmail"></img></Link>
+
+            <div className="header-left">
+                <span class="material-symbols-outlined">
+                    menu
+                </span>
+                <Link to="/mail" className="logo-Gmail"><img src="assets/img/gmail.png" className="gmail-img-header" alt="Gmail"></img><h1>Gmail</h1> </Link>
+            </div>
             <div className="search-input">
                 <span class="material-symbols-outlined">
                     search
@@ -68,6 +74,7 @@ export function MailFilter({ onSetFilter, filterBy, isRead, setSortBy, sortBy })
                 <React.Fragment>
                     <div className="filters">
                         <select name="isRead" value={filterByToEdit.isRead} onChange={handleChange}>
+                            <option value="">All</option>
                             <option value="">Unread</option>
                             <option value="1">Read</option>
                         </select>
