@@ -18,8 +18,6 @@ import { TodoNote} from "../cmps/TodoNote.jsx";
     const [notes, setNotes] = useState([]);
     const [filterBy, setFilterBy] = useState(noteService.getDefaultFilter());
     const [userMsg, setUserMsg] = useState("");
-    const [pinnedNotes, setPinnedNotes] = useState([]);
-    const [unpinnedNotes, setUnpinnedNotes] = useState([]);
 
     useEffect(() => {
         loadNotes()
@@ -29,10 +27,7 @@ import { TodoNote} from "../cmps/TodoNote.jsx";
     function loadNotes() {
         noteService.query(filterBy)
             .then((notes) => {
-              const pinned = notes.filter(note => note.isPinned);
-              const unpinned = notes.filter(note => !note.isPinned);
-              setPinnedNotes(pinned);
-              setUnpinnedNotes(unpinned);
+                setNotes(notes)
             })
     }
 
@@ -62,7 +57,9 @@ import { TodoNote} from "../cmps/TodoNote.jsx";
         });
       }
       
-  
+    
+
+
       function onUpdateNoteColor(noteId, color) {
         console.log(`Updating note ${noteId} with color ${color}`); 
     
@@ -117,21 +114,6 @@ import { TodoNote} from "../cmps/TodoNote.jsx";
         });
     }
 
-    function togglePin(noteId) {
-      const allNotes = [...pinnedNotes, ...unpinnedNotes];
-      const noteIndex = allNotes.findIndex(note => note.id === noteId);
-      if (noteIndex !== -1) {
-          allNotes[noteIndex].isPinned = !allNotes[noteIndex].isPinned;
-          noteService.save(allNotes[noteIndex]).then(() => {
-              const pinned = allNotes.filter(note => note.isPinned);
-              const unpinned = allNotes.filter(note => !note.isPinned);
-              setPinnedNotes(pinned);
-              setUnpinnedNotes(unpinned);
-          }).catch(err => console.error('Failed to save note', err));
-      }
-  }
-  
-
     return (
 
     <section className="note-index">
@@ -141,28 +123,18 @@ import { TodoNote} from "../cmps/TodoNote.jsx";
 
         <AddNotes 
         onAddNote={onAddNote}  
+        
         />
 
-        <h2 className="Pinned-Notes">Pinned</h2>
+
+
         <NotePreview
-          notes={pinnedNotes}
-          onRemoveNote={onRemoveNote}
-          onDuplicateNote={onDuplicateNote}
-          onUpdateNoteColor={onUpdateNoteColor}
-          onUpdateNote={handleUpdateNote}
-          onTogglePin={togglePin}
-        />
-
-
-        <h2 className="Unpinned-Notes">Others</h2>
-        <NotePreview
-          notes={unpinnedNotes}
-          onRemoveNote={onRemoveNote}
-          onDuplicateNote={onDuplicateNote}
-          onUpdateNoteColor={onUpdateNoteColor}
-          onUpdateNote={handleUpdateNote}
-          onTogglePin={togglePin}
-        />
+            notes={notes}
+            onRemoveNote={onRemoveNote}
+            onDuplicateNote={onDuplicateNote}
+            onUpdateNoteColor={onUpdateNoteColor}
+            onUpdateNote={handleUpdateNote}
+            />
     
         <UserMsg msg={userMsg} />
         </section>
