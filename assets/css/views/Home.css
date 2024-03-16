@@ -1,6 +1,6 @@
 
 .home {
-  margin-top: 200px;
+  margin-top: 150px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -19,7 +19,7 @@
 
 .keep-img {
   margin: 20px;
-  padding: 10px 10px;
+ 
   max-width: 100px;
   max-height: 100px;
 
@@ -37,6 +37,7 @@
 .home-title span {
   font-size: 2em;
   color: rgb(63, 63, 225);
+  padding: 10px;
 
 }
 
@@ -44,4 +45,64 @@
 .sub-title-home { 
   font-size: 2em;
   font-family: lato-light;
+}
+
+
+@media (max-width: 1080px) {
+  .home {
+    margin-top: 100px;
+  }
+
+  .home-title {
+    font-size: 2.5em; 
+  }
+
+  .home-title span {
+    font-size: 1.5em;
+    padding: 5px;
+  }
+
+  .sub-title-home {
+    font-size: 1.5em; 
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column; 
+    margin-top: 50px;
+   
+  }
+
+  .home-title {
+    font-size:1.5em; 
+    flex-wrap: wrap;
+  }
+
+  .home-title span {
+    font-size: 2em; 
+    padding-inline: 5px;
+  }
+
+  .sub-title-home {
+    font-size: 1.5em; 
+    margin-bottom: 30px;
+  }
+
+  .gmail-note-icons{
+    width: 100%;
+    height: 100px;
+   }
+   .keep-img, .gmail-img {
+    max-width: 80px;
+    max-height: 80px; 
+  }
+}
+
+@media (max-width: 480px) {
+  .keep-img, .gmail-img {
+    max-width: 80px;
+    max-height: 80px; 
+  }
 }

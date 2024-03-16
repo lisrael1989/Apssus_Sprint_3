@@ -14,9 +14,9 @@
 }
 
 .about-img {
-  display: flex;
+  display: block;
   margin: 20px auto;
-  max-width: 50%;
+  max-width: 500px;
   border: 1px solid black;
   box-shadow: 1px 3px 5px 3px rgba(0, 0, 0, 0.607);
 }
@@ -28,43 +28,19 @@
  text-align: center;
 }
 
-
 .title-our-team , .vision-title, .Goal-title{
   margin-top: 50px;
   margin-bottom: 50px;
   font-size: 2em;
   text-align: center;
   background-color: bisque;
-  
 }
-
-
-
-/* .israel-name{
-  font-size: 2.5em;
-  text-align: center;
-}
-
-.israel-name span{
-  font-size: 1.5em;
-color: var(--clr1);
-} */
-
-
-/* .israel-img{
-  max-width: 300px;
-    max-height: 300px;
-    border-radius: 50%;
-    box-shadow: 0px 5px 7px 3px rgb(88, 87, 87);
-    display: flex;
-    margin: 20px auto;
-} */
 
 .team-section{ 
   display: flex;
   flex-wrap: wrap;
   justify-content: center; 
-  gap: 100px;
+  gap: 30px;
 
 }
 
@@ -76,17 +52,18 @@ color: var(--clr1);
   font-size: 1.5em;
   font-family: lato-black;
   gap:20px;
-  max-width: 500px;
+  max-width: 300px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   background-color: #fff;
+  padding: 20px;
 }
 
 
 .member-img {
   width: 100%; 
   border-radius: 50%;
-  max-width: 300px; 
+  max-width: 200px; 
   margin-bottom: 1rem; 
   box-shadow: 1px 3px 5px 4px black;
 }
@@ -95,9 +72,46 @@ color: var(--clr1);
   .team-member {
     flex-direction: column; 
     justify-content: start;
+  
   }
 
-  .member-name, .member-img {
-    margin: 0 15px; 
+ .member-img {
+    max-width: 300px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .about-nav {
+    font-size: 1em; 
+  }
+
+  .about p, .title-our-team, .vision-title, .Goal-title {
+    font-size: 1.5em; 
+  }
+
+  .team-section {
+    gap: 10px; 
+  }
+}
+
+
+@media (max-width: 480px) {
+  .about-nav {
+    font-size: 0.9em;
+  }
+
+  .about p, .title-our-team, .vision-title, .Goal-title {
+    font-size: 1.2em; 
+    margin-top: 20px;
+    margin-bottom: 20px; 
+  }
+
+  .team-section {
+    gap: 5px; 
+  }
+
+  .team-member {
+    font-size: 1em; 
   }
 }

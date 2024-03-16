@@ -12,7 +12,7 @@ export function Home() {
         </h1>
         <h2 className="sub-title-home">Let's start the journey...</h2>
       </div>
-      <div>
+      <div className="gmail-note-icons">
       <Link to="/mail">
           <img
             className="gmail-img "
