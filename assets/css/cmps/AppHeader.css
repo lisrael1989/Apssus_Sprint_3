@@ -33,3 +33,50 @@ nav a.active {
     font-weight: bold;
     text-decoration: overline;
 }
+
+
+@media (max-width: 1024px) {
+    .main-logo {
+        font-size: 1.5em; 
+    }
+
+    .main-logo span {
+        font-size: 1.2em; 
+    }
+
+    nav a {
+        font-size: 1.5em; 
+    }
+}
+
+@media (max-width: 768px) {
+    .app-header {
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .main-logo {
+        margin-left: 0; 
+        margin-bottom: 10px; 
+    }
+
+    nav a {
+        font-size: 1.2em; 
+        margin-right: 15px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .main-logo {
+        font-size: 1.2em; 
+    }
+
+    .main-logo span {
+        font-size: 1em; 
+    }
+
+    nav a {
+        font-size: 1em; 
+        margin: 0.2em;
+    }
+}
