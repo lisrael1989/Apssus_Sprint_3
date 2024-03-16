@@ -173,7 +173,23 @@ function _createNotes() {
                     info: {
                     txt: 'Why did the skeleton refuse to fight anyone at the Halloween party? Because he realized he didnt have the guts for it. Plus, every time he tried to throw a punch, he would just rattle himself!'
                     }
-                    }
+                    },
+                    {
+                      id: 'n111',
+                      type: 'NoteTodos',
+                      isPinned: false,
+                      style: {
+                        backgroundColor: '#aacddd'
+                        },
+                      info: {
+                      title: 'Get my stuff together',
+                      todos: [
+                      { txt: 'Add about page', doneAt: 1112222},
+                      { txt: 'Add home page', doneAt: 187111111 },
+                      { txt: 'find time to sleep', doneAt: 1112222 }
+                      ]
+                      }
+                      },
         ]
         utilService.saveToStorage(NOTE_KEY, notes);
 
