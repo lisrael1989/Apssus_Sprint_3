@@ -12,7 +12,7 @@
 }
 .gmail-img-header{
     width: 45px;
-    padding-left: 10px;
+    padding-left: 15px;
     /* background-color: rgba(204, 219, 235, 0.136) */
 }
 
@@ -69,10 +69,10 @@
 }
 
 .filters{
+    position: absolute;
     background-color: antiquewhite;
     padding: 10px;
-    position: absolute;
-    right: 100px;
+    right:30vw;
     top: 60px;
     width: 300px; 
     height: auto;
@@ -88,6 +88,7 @@
 }
 
 .filters select{
+    font-size: 20px;
     border: 1px solid rgba(0, 0, 0, 0);
 }
 
@@ -99,7 +100,7 @@
 .logo-Gmail h1{
     font-size: 2em;
     color: gray;
-    font-family: lato-light;
+    font-family: lato-light , sans-serif;
     margin-left: 10px;
 }
 
@@ -112,3 +113,36 @@
     font-size: 30px;
     margin-left: 20px;
 }
+
+.keep-img-header{
+    max-height: 70px;
+    max-width: 50px;
+    margin-left: 50px;
+  }
+  
+  .keep-btn-ben{
+    margin-right: 50px;
+    cursor: pointer;
+    max-height: 100px;
+    max-width: 50px;
+   
+  }
+
+
+  .keep-name{
+    margin-left: 10px;
+    font-size:2em;
+    color: gray;
+    font-family: lato-light;
+    
+  }
+  
+  
+.keep-nev-btn {
+    width: 30px;
+  }
+  
+  .nav-container-ben{
+    position: relative;
+    display: inline-block;
+  }

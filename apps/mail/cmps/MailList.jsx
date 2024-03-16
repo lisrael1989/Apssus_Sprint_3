@@ -13,6 +13,9 @@ export function MailList({ mails, OnRemoveMail, OnReadMail, onSelectMail, select
     function letters(body, maxLength = 23) {
         return body.length > maxLength ? body.substring(0, maxLength) + '...' : body
     }
+    function lettersTitle(body, maxLength = 15) {
+        return body.length > maxLength ? body.substring(0, maxLength) + '...' : body
+    }
 
     return (
         <div className="mail-list">
@@ -31,7 +34,7 @@ export function MailList({ mails, OnRemoveMail, OnReadMail, onSelectMail, select
                         <span className="name-mail">{mail.from[0].toUpperCase() + mail.from.slice(1)}</span>
 
                         {/* <span>{mail.}</span> */}
-                        <span className="subject-mail">{mail.subject}<span className="mail-body">{letters(mail.body)}</span></span>
+                        <span className="subject-mail">{lettersTitle(mail.subject)}<span className="mail-body">{letters(mail.body)}</span></span>
                     </Link>
 
                     <div className="btn-mail">
