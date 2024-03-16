@@ -34,8 +34,30 @@ button:focus {
 }
 
 .fas {
-  color: #575656fd;
+  color: #939393fd;
   width: 30px;
   font-size: 1.2em;
 }
 
+.fas:hover{
+background-color: #ccc;
+border-radius: 50%;
+transform: scale(1.3);
+}
+
+.selected {
+  color: black;
+  font-weight: bold;
+  
+}
+
+.fa-check{ 
+background-color: black;
+color: white;
+border-radius: 50%;
+}
+.fa-check:hover{ 
+background-color: black;
+color: white;
+border-radius: 50%;
+}
