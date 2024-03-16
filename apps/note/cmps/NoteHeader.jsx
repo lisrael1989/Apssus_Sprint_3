@@ -1,29 +1,19 @@
-const { useState, useEffect } = React;
+const { useState} = React;
 const { Link,NavLink } = ReactRouterDOM
 
 
-export function NoteHeader({ onSetFilter, filterBy }) {
-  const [filterByToEdit, setFilterByToEdit] = useState(filterBy);
+export function NoteHeader({ onSetFilter }) {
+  const [filterText, setFilterText] = useState('');
   const [isNavVisible, setIsNavVisible] = useState(false);
   const toggleNavBar = () => {
     setIsNavVisible(!isNavVisible);
   };
 
-  useEffect(() => {
-    onSetFilter(filterByToEdit);
-  }, [filterByToEdit]);
-
-  function onFilter(ev) {
-    ev.preventDefault();
-    onSetFilter(filterByToEdit);
-  }
-
-  function handleChange({ target }) {
-    let { value, name: field, type } = target;
-    console.log(value, field, type);
-    setFilterByToEdit((prevFilterBy) => ({ ...prevFilterBy, [field]: value }));
-    console.log(filterByToEdit);
-  }
+  const handleChange = (event) => {
+    const { value } = event.target;
+    setFilterText(value);
+    onSetFilter({ text: value }); 
+  };
 
     return <header className="note-header">
       
@@ -36,15 +26,14 @@ export function NoteHeader({ onSetFilter, filterBy }) {
       </Link>
       <h1 className="keep-name">keep</h1>
       
-      <form className="search-header" onSubmit={onFilter}>
-        <label htmlFor="title"></label>
+      <form className="search-header" onSubmit={(ev) => ev.preventDefault()}>
+       
         <input
           type="search"
-          id="title"
           className="title"
           name="title"
           title="search by txt or title"
-          value= {filterByToEdit.title} 
+          value= {filterText} 
           onChange={handleChange}
           placeholder="Search..."
         />
