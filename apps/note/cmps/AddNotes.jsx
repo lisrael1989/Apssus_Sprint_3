@@ -64,7 +64,9 @@ export function AddNotes( {onAddNote}) {
     setInputValue(''); 
   };
 
-
+  const isSelected = (type) => {
+    return inputType === type ? 'selected' : '';
+  };
 
   return (
     <div className="note-input-container">
@@ -75,11 +77,11 @@ export function AddNotes( {onAddNote}) {
         value={inputValue}
         onChange={handleInputChange}
       />
-      <button className="fas fa-font" title="Add Text note" onClick={() => handleInputTypeChange('NoteTxt')}></button>
-      <button className="fas fa-image" title="Add image note" onClick={() => handleInputTypeChange('NoteImg')}></button>
-      <button className="fas fa-video" title="Add Video note" onClick={() => handleInputTypeChange('NoteVideo')}></button>
-      <button className="fas fa-list" title="Add Todo note" onClick={() => handleInputTypeChange('NoteTodos')}></button>
-      <button className="fas fa-check" onClick={handleSubmit}></button>
+      <button className={`fas fa-font ${isSelected('NoteTxt')}`} title="Add Text note" onClick={() => handleInputTypeChange('NoteTxt')}></button>
+      <button className={`fas fa-image ${isSelected('NoteImg')}`} title="Add image note" onClick={() => handleInputTypeChange('NoteImg')}></button>
+      <button className={`fas fa-video ${isSelected('NoteVideo')}`} title="Add Video note" onClick={() => handleInputTypeChange('NoteVideo')}></button>
+      <button className={`fas fa-list ${isSelected('NoteTodos')}`} title="Add Todo note" onClick={() => handleInputTypeChange('NoteTodos')}></button>
+      <button className="fas fa-check" title="Submit note" onClick={handleSubmit}></button>
     </div>
   );
 }
