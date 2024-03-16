@@ -12,7 +12,6 @@ export function NotePreview({ notes, onRemoveNote, onDuplicateNote, onUpdateNote
   };
 
 
-
   return (
     <ul className="note-list">
       {notes.map(note => {

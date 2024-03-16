@@ -44,8 +44,6 @@
   font-size:2em;
   color: gray;
   font-family: lato-light;
- 
-  
 }
 
 .nav-links {
@@ -62,9 +60,11 @@
 }
 
 .nav-links a {
-  padding: 5px ;
+  padding:5px 5px ;
   margin-right: 50px;
+  font-size: 30px;
 }
+
 .nav-links a:hover {
  color: rgb(177, 178, 183);
 }
@@ -75,6 +75,7 @@
 
 .keep-nev-btn {
   width: 30px;
+
 }
 
 

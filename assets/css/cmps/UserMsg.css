@@ -4,8 +4,8 @@
     position: fixed;
     z-index: 1000;
     position: absolute;
-    bottom: 1em;
-    right: 1em;
+    bottom: 0;
+    right: 0;
     font-weight: bold;
     border-radius: 2px;
     font-size: 1.3em;
