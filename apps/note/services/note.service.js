@@ -30,9 +30,6 @@ function query(filterBy = { text: '' }) {
       });
 }
 
-
-
-
 function getDefaultFilter() {
     return {
       title: "",
