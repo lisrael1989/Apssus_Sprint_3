@@ -32,13 +32,9 @@ function query(filterBy = getDefaultFilter(), sortBy = getDefaultSort()) {
                 const regex = new RegExp(filterBy.txt, 'i')
                 mails = mails.filter(mail => regex.test(mail.from))
             }
-            if (filterBy.isRead === true) {
-                mails = mails.filter(mail => mail.isRead)
+            if (filterBy.isRead !== undefined) { 
+                mails = mails.filter(mail => filterBy.isRead ? mail.isRead : !mail.isRead)
             }
-            if (!filterBy.isRead === false) {
-                mails = mails.filter(mail => !mail.isRead)
-            }
-
             if (sortBy.title !== 'none') {
                 const direction = sortBy.title === 'a' ? 1 : -1
                 mails.sort((a, b) => a.subject.localeCompare(b.subject) * direction)
@@ -118,7 +114,7 @@ function _createMail(email, from, to, subject, body, isRead, sentAt, removedAt) 
 }
 
 function getDefaultFilter() {
-    return { txt: '', isRead: false }
+    return { txt: '', isRead: undefined }
 }
 function getDefaultSort() {
     return { time: 'd', title: 'none' }

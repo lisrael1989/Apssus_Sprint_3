@@ -7,12 +7,12 @@ export function MailCompose({ onClose, onSend }) {
     const handleChange = (e) => {
         const { name, value } = e.target;
         setMail(prevMail => ({ ...prevMail, [name]: value }))
-    };
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         onSend(mail)
-    };
+    }
 
     return (
         <div className="mail-compose-container">

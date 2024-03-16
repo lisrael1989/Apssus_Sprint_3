@@ -10,11 +10,12 @@
     border-radius: 2px;
     font-size: 1.3em;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.331);
+    border-radius: 30px;
 
 }
 
 .user-msg.success {
-    background-color: lightgreen;
+    background-color: rgb(227, 253, 227);
 }
 
 .user-msg.error {

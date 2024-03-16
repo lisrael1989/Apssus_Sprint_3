@@ -12,6 +12,15 @@ import { MailPreview } from '../cmps/MailPreview.jsx'
 import { MailFolderList } from '../cmps/MailFolderList.jsx'
 import { utilService } from '../../../services/util.service.js'
 
+import {
+    eventBusService,
+    showErrorMsg,
+    showSuccessMsg,
+} from "../../../services/event-bus.service.js"
+
+import { UserMsg } from "../cmps/UserMsg.jsx";
+
+
 
 export function MailIndex() {
 
@@ -21,6 +30,9 @@ export function MailIndex() {
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [sortBy, setSortBy] = useState(mailService.getDefaultSort())
     const [isCompose, setCompose] = useState(false)
+    const [onsendmail, setSendmail] = useState(0)
+    const [userMsg, setUserMsg] = useState("");
+
     const myUser = loggedinUser
     console.log(myUser)
 
@@ -43,14 +55,17 @@ export function MailIndex() {
             .then((savedmail) => {
                 setMails(prevMails => prevMails.map(mail => mail.id === savedmail.id ? savedmail : mail))
 
-            })
+                setSendmail(1)
+                showSuccessMsg(`mail send successfully `);
 
+            })
+        setCompose(false)
     }
 
 
     useEffect(() => {
         loadMails()
-    }, [filterBy, sortBy])
+    }, [filterBy, sortBy, onsendmail])
 
 
 
@@ -93,6 +108,8 @@ export function MailIndex() {
             const updatedMails = mails.map(m => m.id === mailId ? { ...m, isRemove: mail.isRemove } : m)
             mailService.save(mail)
             setMails(updatedMails)
+
+            showSuccessMsg(`mail removed successfully (${mailId})`);
         })
     }
 
@@ -102,6 +119,7 @@ export function MailIndex() {
             const updatedMails = mails.map(m => m.id !== mail.id)
             mailService.remove(mail.id)
             setMails(updatedMails)
+            showSuccessMsg(`mail deleted successfully (${mailId})`)
         })
     }
 
@@ -116,7 +134,7 @@ export function MailIndex() {
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
                         selectedMail={selectedMail}
-                      />
+                    />
                 )
             case '/mail/trash':
                 return (
@@ -125,7 +143,7 @@ export function MailIndex() {
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
                         selectedMail={selectedMail}
-                         />
+                    />
                 )
             case '/mail/send':
                 return (
@@ -134,7 +152,7 @@ export function MailIndex() {
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
                         selectedMail={selectedMail}
-                        />
+                    />
                 )
             case '/mail/write':
                 return (
@@ -143,7 +161,7 @@ export function MailIndex() {
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
                         selectedMail={selectedMail}
-                         />
+                    />
                 )
             default:
                 return (
@@ -155,33 +173,37 @@ export function MailIndex() {
     }
 
     const { txt, isRead } = filterBy
-    return (<div className="mail-page">
+    return (
+        <div className="mail-page">
 
-        <MailFilter
-            onSetFilter={onSetFilter}
-            filterBy={{ txt, isRead }}
-            sortBy={sortBy}
-            setSortBy={setSortBy} />
-        <div className="mail-main">
+            <MailFilter
+                onSetFilter={onSetFilter}
+                filterBy={{ txt, isRead }}
+                sortBy={sortBy}
+                setSortBy={setSortBy} />
+            <div className="mail-main">
 
-            <MailFolderList
-                opemCompose={opemCompose}
-            />
-            {/* <div className="more-Options">
+                <MailFolderList
+                    opemCompose={opemCompose}
+                />
+                {/* <div className="more-Options">
                 <h1 className="send fa-solid fa-pen"></h1>
                 <Link to='/mail'><h1 className="fa-solid fa-inbox"></h1></Link>
                 <h1 className="fa-solid fa-trash-can"></h1>
                 <h1 className="fa-regular fa-paper-plane"></h1>
             </div> */}
 
-            <div className="mail-list-container">
-                {mails ? getMailList() : null}
+                <div className="mail-list-container">
+                    {mails ? getMailList() : null}
+                </div>
             </div>
-        </div>
-        {isCompose ? <MailCompose
-            onClose={() => setCompose(false)}
-            onSend={sendMail} /> : ''}
-    </div >
+            {isCompose ? <MailCompose
+                onClose={() => setCompose(false)}
+                onSend={sendMail} /> : ''}
+            <UserMsg msg={userMsg} />
+
+        </div >
+
 
     )
 }

@@ -216,3 +216,11 @@
    padding-top: 20px;
    padding-bottom: 20px;
 }
+
+
+.message-mails{
+   border: 1px solid rgba(126, 125, 125, 0.225);
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}

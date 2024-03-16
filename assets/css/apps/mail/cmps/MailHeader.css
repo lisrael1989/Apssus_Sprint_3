@@ -100,7 +100,7 @@
 .logo-Gmail h1{
     font-size: 2em;
     color: gray;
-    font-family: lato-light , sans-serif;
+    font-family: lato-light, sans-serif;
     margin-left: 10px;
 }
 
@@ -145,4 +145,11 @@
   .nav-container-ben{
     position: relative;
     display: inline-block;
+  }
+
+  .header-titles{
+    border: 1px solid rgba(126, 125, 125, 0.225);
+    padding: 10px;
+    border-radius: 20px;
+    font-weight: bold;
   }

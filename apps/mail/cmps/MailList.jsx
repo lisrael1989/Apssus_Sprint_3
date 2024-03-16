@@ -8,7 +8,9 @@ import { utilService } from '../../../services/util.service.js'
 export function MailList({ mails, OnRemoveMail, OnReadMail, onSelectMail, selectedMail, sortBy, setSortBy }) {
     let unredMsg = mails.filter(mail => !mail.isRead).length
     // const timeSend = mails.map(mail => mail.sentAt = utilService.getRelativeTime(mail.sentAt))
-
+  
+    
+  
 
     function letters(body, maxLength = 23) {
         return body.length > maxLength ? body.substring(0, maxLength) + '...' : body
@@ -16,12 +18,12 @@ export function MailList({ mails, OnRemoveMail, OnReadMail, onSelectMail, select
     function lettersTitle(body, maxLength = 15) {
         return body.length > maxLength ? body.substring(0, maxLength) + '...' : body
     }
-
+    if(!mails||!mails.length) return <div className="message-mails">No messages matching your search were found...</div>
     return (
         <div className="mail-list">
 
             <div className="header-of-list">
-                <span>mails unread:{unredMsg}</span>
+                <span className="header-titles">mails unread:{unredMsg}</span>
  
         </div>
             {

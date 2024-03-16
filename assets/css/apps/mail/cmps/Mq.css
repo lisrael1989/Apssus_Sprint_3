@@ -7,7 +7,7 @@
         width: 100%;
     }
 
-    .subject-mail{
+    .subject-mail {
         margin-left: 30px
     }
 
@@ -27,46 +27,43 @@
     .subject-mail {
         font-size: 18px;
     }
- 
+
 
     .header-mail,
-    .mail-list-container
-     {
+    .mail-list-container {
         width: 100%;
     }
 
-    .header-mail {
-     
-    }
+    .header-mail {}
 
-    
+
     .logo-Gmail {
         width: 90%;
         margin: 10px 0;
     }
 
     .mail-list .line-mail {
-      
+
         align-items: flex-start;
     }
 
     .mail-list .line-mail a {
         width: 100%;
     }
+
     .logo-Gmail h1 {
         display: none;
     }
 }
 
 @media (max-width: 535px) {
-    .read{
+    .read {
         /* border-radius: 50px; */
-       
+
     }
 
-    .header-mail {
-     
-    }
+    .header-mail {}
+
     .logo-Gmail h1 {
         display: none;
     }
@@ -84,15 +81,16 @@
         justify-content: center;
         align-items: center;
     }
-/* 
+
+    /* 
     .search-input {
         flex-direction: row;
         justify-content: space-between;
     } */
 
-     .search-input input {
+    .search-input input {
         max-width: 30vw
-    } 
+    }
 
     .keep-btn-ben {
         width: max-content;
@@ -114,7 +112,7 @@
     }
 
     span.subject-mail {
-     margin-left: 30px;
+        margin-left: 30px;
     }
 
     .more-Options {

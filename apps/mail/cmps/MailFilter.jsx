@@ -92,7 +92,7 @@ export function MailFilter({ onSetFilter, filterBy, isRead, setSortBy, sortBy })
 
                 </React.Fragment>
             )}
-            <div className="nav-container-ben ">
+            <div className="nav-container-ben">
                 <img className="keep-btn-ben"
                     src="assets/img/keep-header-btn.png"
                     title="navigation to other pages"
