@@ -34,7 +34,7 @@ export function AddNotes( {onAddNote}) {
           break;
         case "NoteImg":
         info={
-          txt:inputValue
+         url:inputValue
         }
           break;
           case "todo":
