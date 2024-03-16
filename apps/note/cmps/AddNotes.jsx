@@ -7,7 +7,7 @@ export function AddNotes( {onAddNote}) {
   const placeholders = {
     NoteTxt: "What's on your mind...",
     NoteImg: "Enter image URL...",
-    video: "Enter video URL...",
+    NoteVideo: "Enter video URL...",
     todo: "Enter comma separated list...",
   };
 
@@ -33,6 +33,11 @@ export function AddNotes( {onAddNote}) {
         }
           break;
         case "NoteImg":
+        info={
+         url:inputValue
+        }
+          break;
+        case "NoteVideo":
         info={
          url:inputValue
         }
@@ -72,7 +77,7 @@ export function AddNotes( {onAddNote}) {
       />
       <button className="fas fa-font" title="Add Text note" onClick={() => handleInputTypeChange('NoteTxt')}></button>
       <button className="fas fa-image" title="Add image note" onClick={() => handleInputTypeChange('NoteImg')}></button>
-      <button className="fas fa-video" title="Add Video note" onClick={() => handleInputTypeChange('video')}></button>
+      <button className="fas fa-video" title="Add Video note" onClick={() => handleInputTypeChange('NoteVideo')}></button>
       <button className="fas fa-list" title="Add Todo note" onClick={() => handleInputTypeChange('todo')}></button>
       <button className="fas fa-check" onClick={handleSubmit}></button>
     </div>
