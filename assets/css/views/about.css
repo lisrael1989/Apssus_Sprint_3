@@ -68,6 +68,8 @@
   box-shadow: 1px 3px 5px 4px black;
 }
 
+
+
 @media (min-width: 768px) {
   .team-member {
     flex-direction: column; 
@@ -79,6 +81,40 @@
     max-width: 300px;
   }
 }
+
+.btn-social {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.git-btn,
+.linkedin-btn {
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.git-btn:hover {
+  background-color: #6cc644;
+}
+
+.linkedin-btn:hover {
+  background-color: #0077b5;
+}
+
+.fa-github,
+.fa-linkedin {
+  font-size: 1.5em;
+}
+
 
 
 @media (max-width: 767px) {
