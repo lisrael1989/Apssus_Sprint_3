@@ -2,11 +2,17 @@
 
 export function TodoNote({ note }) {
   return (
-    <ul>
+    <div className="todo-note">
+    <ul style={{ listStyleType: "none", padding: 0 }} >
       {note.info.todos.map((todo, index) => (
-        <li key={index}>{todo.txt}</li>
-        
+        <li key={index}>
+          <label >
+          <input type="checkbox" />
+          <span className="label">{todo.txt }</span>
+          </label>
+           </li>
       ))}
     </ul>
+    </div>
   );
 }

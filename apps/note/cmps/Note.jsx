@@ -23,6 +23,6 @@ export function Note({note}) {
 
   };
 
-  return <div>{renderNoteType()}</div>;
+  return <div style={{width:"100%"}}>{renderNoteType()}</div>;
 
 }
