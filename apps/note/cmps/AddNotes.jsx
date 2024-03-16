@@ -1,12 +1,12 @@
 const {useState}=React
 
 export function AddNotes( {onAddNote}) {
-  const [inputType, setInputType] = useState('txt'); 
+  const [inputType, setInputType] = useState('NoteTxt'); 
   const [inputValue, setInputValue] = useState('');
 
   const placeholders = {
-    text: "What's on your mind...",
-    image: "Enter image URL...",
+    NoteTxt: "What's on your mind...",
+    NoteImg: "Enter image URL...",
     video: "Enter video URL...",
     todo: "Enter comma separated list...",
   };
@@ -24,13 +24,37 @@ export function AddNotes( {onAddNote}) {
     event.preventDefault();
     if (!inputValue.trim()) return;
 
-    const newNoteData = {
-      type: `Note${inputType.charAt(0).toUpperCase() + inputType.slice(1)}`,
-      info: inputType === 'todo'
-        ? { todos: inputValue.split(',').map(txt => ({ txt: txt.trim(), doneAt: null })) }
-        : { url: inputValue },
-    };
-    
+   
+      let info;
+      switch (inputType) {
+        case "NoteTxt":
+        info={
+          txt:inputValue
+        }
+          break;
+        case "NoteImg":
+        info={
+          txt:inputValue
+        }
+          break;
+          case "todo":
+            info={
+              todos: inputValue
+              .split(",")
+              .map((txt) => ({ txt: txt.trim(), doneAt: null })),
+            }
+            break;
+        default:
+          info={url:inputValue}
+          break;
+      }
+   
+      const newNoteData = {
+        type: inputType,
+        info: info,
+      };
+  
+  
     onAddNote(newNoteData);
     setInputValue(''); 
   };
@@ -46,8 +70,8 @@ export function AddNotes( {onAddNote}) {
         value={inputValue}
         onChange={handleInputChange}
       />
-      <button className="fas fa-font" title="Add Text note" onClick={() => handleInputTypeChange('text')}></button>
-      <button className="fas fa-image" title="Add image note" onClick={() => handleInputTypeChange('image')}></button>
+      <button className="fas fa-font" title="Add Text note" onClick={() => handleInputTypeChange('NoteTxt')}></button>
+      <button className="fas fa-image" title="Add image note" onClick={() => handleInputTypeChange('NoteImg')}></button>
       <button className="fas fa-video" title="Add Video note" onClick={() => handleInputTypeChange('video')}></button>
       <button className="fas fa-list" title="Add Todo note" onClick={() => handleInputTypeChange('todo')}></button>
       <button className="fas fa-check" onClick={handleSubmit}></button>
