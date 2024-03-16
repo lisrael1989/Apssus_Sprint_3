@@ -1,1 +1,20 @@
  /* note index */
+
+
+ .Pinned-Notes {
+  font-size: 1em;
+  margin-left: 50px;
+  margin-bottom: 30px;
+  font-family: lato-thin;
+  text-transform: uppercase;
+ }
+
+.Unpinned-Notes{
+  font-size: 1em;
+  margin-left: 50px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-family: lato-thin;
+  text-transform: uppercase;
+
+}
