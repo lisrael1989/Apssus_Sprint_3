@@ -107,3 +107,25 @@
 .note-item p { 
   text-align: center;
 }
+
+.color-picker-input{ 
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* #color-picker{
+-moz-appearance: none;
+-webkit-appearance: none;
+appearance: none;
+width: 40px;
+height: 40px;
+margin: 0 100px;
+border: transparent;
+background-color: transparent;
+}
+
+#color-picker::-webkit-color-swatch{
+  border-radius: 50%;
+  border: 1px solid rgb(12, 12, 12);
+
+} */
