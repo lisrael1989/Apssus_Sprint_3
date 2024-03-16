@@ -44,7 +44,6 @@
 
 }
 
-
 .team-member {
   display: flex;
   flex-direction: column;
@@ -59,7 +58,6 @@
   padding: 20px;
 }
 
-
 .member-img {
   width: 100%; 
   border-radius: 50%;
@@ -68,7 +66,7 @@
   box-shadow: 1px 3px 5px 4px black;
 }
 
-
+/*media min- width 768 */
 
 @media (min-width: 768px) {
   .team-member {
@@ -116,6 +114,7 @@
 }
 
 
+/*media max- width 768 */
 
 @media (max-width: 767px) {
   .about-nav {
@@ -131,6 +130,7 @@
   }
 }
 
+/*media max- width 480 */
 
 @media (max-width: 480px) {
   .about-nav {
