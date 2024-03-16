@@ -15,22 +15,23 @@ export const noteService = {
 }
 
 
-function query(filterBy = getDefaultFilter()) {
-    return storageService.query(NOTE_KEY)
-    .then(notes => {
-        if (filterBy.title) {
-            const regex = new RegExp(filterBy.title, "i");
-            notes = notes.filter((note) => regex.test(note.info.title));
+function query(filterBy = { text: '' }) {
+  return storageService.query(NOTE_KEY)
+      .then(notes => {
+          if (!filterBy.text) {
+              return notes; 
           }
-          if (filterBy.txt) {
-            notes = notes.filter((note) => {
-              return note.info.txt.includes (filterBy.txt);
-            });
-          }
-          
-        return notes
-    })
+          const regex = new RegExp(filterBy.text, 'i'); 
+          return notes.filter(note => 
+              regex.test(note.info.title) || 
+              regex.test(note.info.txt) || 
+              regex.test(note.type)
+          );
+      });
 }
+
+
+
 
 function getDefaultFilter() {
     return {
