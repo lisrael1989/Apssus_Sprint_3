@@ -91,6 +91,18 @@ function _createNotes() {
         }
         },
         {
+        id: 'n109',
+        createdAt: 1112222,
+        type: 'NoteVideo',
+        isPinned: true,
+        style: {
+        backgroundColor: '#11111'
+        },
+        info: {
+        url: 'https://www.youtube.com/watch?v=sWOrd50HYa4'
+        }
+      },
+        {
         id: 'n102',
         type: 'NoteImg',
         isPinned: false,
