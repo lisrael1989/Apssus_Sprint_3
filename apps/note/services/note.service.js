@@ -121,8 +121,8 @@ function _createNotes() {
         info: {
         title: 'Get my stuff together',
         todos: [
-        { txt: 'Driving license', doneAt: null },
-        { txt: 'Coding power', doneAt: 187111111 }
+        { txt: 'Driving license', doneAt: null, checked: false },
+        { txt: 'Coding power', doneAt: 187111111, checked: true }
         ]
         }
         },
@@ -184,9 +184,9 @@ function _createNotes() {
                       info: {
                       title: 'Get my stuff together',
                       todos: [
-                      { txt: 'Add about page', doneAt: 1112222},
-                      { txt: 'Add home page', doneAt: 187111111 },
-                      { txt: 'find time to sleep', doneAt: 1112222 }
+                      { txt: 'Add about page', doneAt: 1112222, checked: true},
+                      { txt: 'Add home page', doneAt: 187111111, checked: true },
+                      { txt: 'find time to sleep', doneAt: 1112222, checked: false }
                       ]
                       }
                       },

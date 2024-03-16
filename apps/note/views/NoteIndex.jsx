@@ -11,6 +11,7 @@ import { NotePreview } from "./NotePreview.jsx";
 import { UserMsg } from "../cmps/UserMsg.jsx";
 import { NoteHeader } from "../cmps/NoteHeader.jsx";
 import { AddNotes } from "../cmps/AddNotes.jsx";
+import { TodoNote} from "../cmps/TodoNote.jsx";
 
 
     export function NoteIndex() {
@@ -101,6 +102,18 @@ import { AddNotes } from "../cmps/AddNotes.jsx";
         }, 3000);
       }
 
+
+      function handleUpdateNote(updatedNote) {
+        const updatedNotes = notes.map(note => note.id === updatedNote.id ? updatedNote : note);
+        setNotes(updatedNotes);
+    
+        noteService.save(updatedNote).then(() => {
+            console.log('Note updated successfully');
+        }).catch(err => {
+            console.error('Failed to update note', err);
+        });
+    }
+
     return (
 
     <section className="note-index">
@@ -110,6 +123,7 @@ import { AddNotes } from "../cmps/AddNotes.jsx";
 
         <AddNotes 
         onAddNote={onAddNote}  
+        
         />
 
 
@@ -119,6 +133,7 @@ import { AddNotes } from "../cmps/AddNotes.jsx";
             onRemoveNote={onRemoveNote}
             onDuplicateNote={onDuplicateNote}
             onUpdateNoteColor={onUpdateNoteColor}
+            onUpdateNote={handleUpdateNote}
             />
     
         <UserMsg msg={userMsg} />

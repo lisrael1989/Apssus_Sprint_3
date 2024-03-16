@@ -4,7 +4,7 @@ import {ImageNote} from "./ImageNote.jsx"
 import {VideoNote} from "./VideoNote.jsx"
 import {TodoNote} from "./TodoNote.jsx"
 
-export function Note({note}) {
+export function Note({note,onUpdateNote}) {
   
   const renderNoteType = () => {
     switch (note.type) {
@@ -15,7 +15,7 @@ export function Note({note}) {
       case 'NoteVideo':
         return <VideoNote note={note} />;
       case 'NoteTodos':
-        return <TodoNote note={note} />;
+        return <TodoNote note={note} onUpdateNote={onUpdateNote} />;
       default:
         return <p>Unknown note type</p>;
        

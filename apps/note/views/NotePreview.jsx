@@ -3,7 +3,7 @@ import {ColorPicker} from "../cmps/ColorPicker.jsx";
 import {Note} from "../cmps/Note.jsx";
 
 
-export function NotePreview({ notes, onRemoveNote, onDuplicateNote, onUpdateNoteColor }) {
+export function NotePreview({ notes, onRemoveNote, onDuplicateNote, onUpdateNoteColor, onUpdateNote }) {
   const [visibleColorPicker, setVisibleColorPicker] = useState({});
  
 
@@ -19,7 +19,7 @@ export function NotePreview({ notes, onRemoveNote, onDuplicateNote, onUpdateNote
         const backgroundColor = note.style && note.style.backgroundColor ? note.style.backgroundColor : '#ffffff';
         return (
           <li key={note.id} className="note-item" style={{ backgroundColor }}>
-            <Note note={note} />
+            <Note note={note}  onUpdateNote={onUpdateNote} />
             <div className="note-actions">
               <button className="btn edit-btn fa-solid fa-pen-to-square"></button>
               <button className="btn pinned-btn fa-solid fa-thumbtack"></button>
