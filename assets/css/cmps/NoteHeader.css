@@ -60,8 +60,9 @@
 }
 
 .nav-links a {
-  padding: 5px ;
+  padding:5px 5px ;
   margin-right: 50px;
+  font-size: 30px;
 }
 
 .nav-links a:hover {
@@ -74,6 +75,7 @@
 
 .keep-nev-btn {
   width: 30px;
+
 }
 
 
