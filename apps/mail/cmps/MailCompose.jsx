@@ -19,7 +19,9 @@ export function MailCompose({ onClose, onSend }) {
             <div className="mail-compose">
                 <div className="header-compose">
                     <h1>New mail</h1>
-                    <button type="button" onClick={onClose}>x</button>
+                    <button type="button" onClick={onClose}><span class="material-symbols-outlined">
+                        close
+                    </span></button>
 
                 </div>
                 <form onSubmit={handleSubmit}>

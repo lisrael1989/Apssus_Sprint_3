@@ -46,11 +46,12 @@ export function MailFilter({ onSetFilter, filterBy, isRead, setSortBy, sortBy })
 
     return (
         <div className="header-mail">
+            
 
             <div className="header-left">
-                <span class="material-symbols-outlined">
+                {/* <span class="material-symbols-outlined">
                     menu
-                </span>
+                </span> */}
                 <Link to="/mail" className="logo-Gmail"><img src="assets/img/gmail.png" className="gmail-img-header" alt="Gmail"></img><h1>Gmail</h1> </Link>
             </div>
             <div className="search-input">
@@ -91,8 +92,8 @@ export function MailFilter({ onSetFilter, filterBy, isRead, setSortBy, sortBy })
 
                 </React.Fragment>
             )}
-            <div className="nav-container">
-                <img className="keep-btn"
+            <div className="nav-container-ben ">
+                <img className="keep-btn-ben"
                     src="assets/img/keep-header-btn.png"
                     title="navigation to other pages"
                     alt=""

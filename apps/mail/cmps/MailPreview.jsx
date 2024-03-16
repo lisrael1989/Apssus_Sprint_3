@@ -19,7 +19,7 @@ export function MailPreview() {
     if (!mail) return <div>Loading...</div>
     return (
         <div className="mail-Msg">
-            <h2>subject:{mail.subject}</h2>
+            <h2>{mail.subject}</h2>
             <div className="human-details">
             <span className="fa-solid fa-user"></span>
             <span className="name-user">{mail.from[0].toUpperCase() + mail.from.slice(1)} - {mail.email} </span>

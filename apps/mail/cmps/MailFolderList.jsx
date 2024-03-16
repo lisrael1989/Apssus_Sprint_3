@@ -5,6 +5,7 @@ const { useState } = React
 export function MailFolderList({opemCompose}) {
     const location = useLocation()
     const route = location.pathname
+    
 
     return <div className="more-Options">
         <Link to='/mail/write' className={route === '/mail/write' ? 'marked' : ''}> <h1 onClick={()=>opemCompose()} className="send fa-solid fa-pen"></h1></Link>
