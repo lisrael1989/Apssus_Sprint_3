@@ -64,6 +64,21 @@
 
     .header-mail {}
 
+    .nav-container-ben {
+        display: flex;
+        padding-left: 20px;
+        margin-right: 20px;
+        align-items: center;
+
+    }
+
+    /* .nav-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    } */
+
     .logo-Gmail h1 {
         display: none;
     }
@@ -201,6 +216,8 @@
     }
 
 
-
+.material-symbols-outlined{
+    margin-right: 5px;
+}
 
 }

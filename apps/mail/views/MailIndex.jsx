@@ -26,7 +26,7 @@ export function MailIndex() {
 
     const [mails, setMails] = useState(null)
     const location = useLocation()
-    const [selectedMail, setSelectedMail] = useState(null)
+    const [selectedMails, setSelectedMails] = useState([])
     const [filterBy, setFilterBy] = useState(mailService.getDefaultFilter())
     const [sortBy, setSortBy] = useState(mailService.getDefaultSort())
     const [isCompose, setCompose] = useState(false)
@@ -56,7 +56,7 @@ export function MailIndex() {
                 setMails(prevMails => prevMails.map(mail => mail.id === savedmail.id ? savedmail : mail))
 
                 setSendmail(1)
-                showSuccessMsg(`mail send successfully `);
+                showSuccessMsg(`mail send successfully `)
 
             })
         setCompose(false)
@@ -92,36 +92,54 @@ export function MailIndex() {
         })
     }
 
-    function onSelectMail(Mail) {
-        if (selectedMail === Mail.id) {
-            setSelectedMail(null)
+    function onSelectAll() {
+        if (selectedMails.length === mails.length) {
+            setSelectedMails([])
         } else {
-            setSelectedMail(Mail.id)
+            setSelectedMails(mails.map(mail => mail.id))
         }
     }
 
-
-
-    function OnRemoveMail(mailId) {
-        mailService.get(mailId).then((mail) => {
-            mail.isRemove = Date.now()
-            const updatedMails = mails.map(m => m.id === mailId ? { ...m, isRemove: mail.isRemove } : m)
-            mailService.save(mail)
-            setMails(updatedMails)
-
-            showSuccessMsg(`mail removed successfully (${mailId})`);
+    function onSelectMail(mailId) {
+        setSelectedMails(currentSelectedMails => {
+            if (currentSelectedMails.includes(mailId)) {
+                return currentSelectedMails.filter(id => id !== mailId)
+            } else {
+                return [...currentSelectedMails, mailId]
+            }
         })
     }
 
-    function OnDeletePermanent(mailId) {
-        mailService.get(mailId).then((mail) => {
-            // mail.isRemove = Date.now()
-            const updatedMails = mails.map(m => m.id !== mail.id)
-            mailService.remove(mail.id)
-            setMails(updatedMails)
-            showSuccessMsg(`mail deleted successfully (${mailId})`)
+
+
+    function OnRemoveMail() {
+        const updatedMails = mails.map(mail => {
+            if (selectedMails.includes(mail.id)) {
+                const updatedMail = { ...mail, isRemove: Date.now() }
+                mailService.save(updatedMail)
+                return updatedMail
+            }
+            return mail
         })
+        setMails(updatedMails)
+        setSelectedMails([])
+        showSuccessMsg("Selected mails removed successfully")
     }
+
+
+    function OnDeletePermanent() {
+        const updatedMails = mails.filter(mail => !selectedMails.includes(mail.id))
+        selectedMails.forEach(mailId => {
+            mailService.remove(mailId)
+        })
+        setMails(updatedMails)
+        setSelectedMails([])
+        showSuccessMsg("Selected mails deleted")
+
+        // loadMails()
+    }
+
+
 
     function getMailList() {
         const route = location.pathname
@@ -133,7 +151,8 @@ export function MailIndex() {
                         OnRemoveMail={OnRemoveMail}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
-                        selectedMail={selectedMail}
+                        selectedMails={selectedMails}
+                        onSelectAll={onSelectAll}
                     />
                 )
             case '/mail/trash':
@@ -142,7 +161,8 @@ export function MailIndex() {
                         OnRemoveMail={OnDeletePermanent}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
-                        selectedMail={selectedMail}
+                        selectedMails={selectedMails}
+                        onSelectAll={onSelectAll}
                     />
                 )
             case '/mail/send':
@@ -151,7 +171,8 @@ export function MailIndex() {
                         OnRemoveMail={OnRemoveMail}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
-                        selectedMail={selectedMail}
+                        selectedMails={selectedMails}
+                        onSelectAll={onSelectAll}
                     />
                 )
             case '/mail/write':
@@ -160,7 +181,8 @@ export function MailIndex() {
                         OnRemoveMail={OnRemoveMail}
                         OnReadMail={OnReadMail}
                         onSelectMail={onSelectMail}
-                        selectedMail={selectedMail}
+                        selectedMails={selectedMails}
+                        onSelectAll={onSelectAll}
                     />
                 )
             default:
