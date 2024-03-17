@@ -18,6 +18,7 @@
   padding-right: 10px;
   font-size: 16px;
   height: 40px;
+  width: 100%; 
 }
 
 button {
@@ -61,4 +62,20 @@ border-radius: 50%;
 background-color: black;
 color: white;
 border-radius: 50%;
+}
+
+
+
+@media (max-width: 768px) {
+  .note-input-container {
+   padding: 0 0;
+    flex-wrap: wrap;
+  }
+
+  button, .fas {
+    width: auto; 
+    margin: 5px auto; 
+  }
+
+
 }
