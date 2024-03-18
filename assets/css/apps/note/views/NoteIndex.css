@@ -1,1 +1,16 @@
  /* note index */
+
+ .pinned-notes, .others-notes{ 
+  color: gray;
+  text-transform: uppercase;
+  font-family: lato-thin;
+ font-size: 1.3em;
+ margin-bottom: 20px;
+ margin-left: 40px;
+ 
+ }
+
+.others-notes{ 
+  margin-top: 50px;
+  margin-bottom: 30px;
+}

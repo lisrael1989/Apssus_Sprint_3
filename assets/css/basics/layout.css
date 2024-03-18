@@ -3,7 +3,7 @@
   grid-template-columns: 0.5rem 1fr 0.5rem;
 }
 
-.main-layout>* {
+.main-layout > * {
   grid-column: 2;
 }
 

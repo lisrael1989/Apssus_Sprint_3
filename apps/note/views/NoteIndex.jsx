@@ -155,7 +155,7 @@ if (!notes) {
 
       {notes && notes.some((note) => note.isPinned) && (
       <div>
-    <h2>Pinned</h2>
+    <h2 className="pinned-notes">Pinned</h2>
     <React.Fragment>
       <NotePreview
         notes={notes.filter((note) => note.isPinned)}
@@ -173,7 +173,7 @@ if (!notes) {
 
 {notes && notes.some((note) => !note.isPinned) && (
       <div>
-    <h2>Others</h2>
+    <h2 className="others-notes">Others</h2>
     <React.Fragment>
       <NotePreview
         notes={notes.filter((note) => !note.isPinned)}
