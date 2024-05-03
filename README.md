@@ -32,7 +32,6 @@ Try the app live here: [Appsus Live Demo](https://lisrael1989.github.io/Apssus_S
   <img src="https://res.cloudinary.com/dpixrsdwh/image/upload/v1714736735/nbkfxpfbfydwj2wndedy.png" width="500">
 </p>
 
-## Technologies Used
 
 ## Technologies Used
 
